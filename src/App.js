@@ -1,34 +1,36 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FallbackLoader from "./components/FallbackLoader";
-import Navbar from "./components/Navbar";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import AllJobs from "./pages/AllJobs";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound"
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ShowNav from "./components/ShowNav";
+import CreateJob from "./pages/admin/CreateJob";
+import JobsList from "./pages/admin/JobsList";
 
-const Login = React.lazy(() => import("./pages/Login"));
-const Register = React.lazy(() => import("./pages/Register"));
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <ShowNav />
         <Switch>
           <Route path="/login" exact>
-            <FallbackLoader>
+            {/* <FallbackLoader> */}
               <Login />
-            </FallbackLoader>
+            {/* </FallbackLoader> */}
           </Route>
           <Route path="/register" exact>
-            <FallbackLoader>
+            {/* <FallbackLoader> */}
               <Register />
-            </FallbackLoader>
+            {/* </FallbackLoader> */}
           </Route>
-          <Route path="/alljobs" exact>
+          <Route path="/jobs" exact>
             <FallbackLoader>
               <AllJobs />
             </FallbackLoader>
@@ -39,8 +41,14 @@ function App() {
             </FallbackLoader>
           </Route>
           <ProtectedRoutes role="admin" path="/admin" exact>
-            <div>hello</div>
-          </ProtectedRoutes>
+                <div>Home</div>
+            </ProtectedRoutes>
+            <ProtectedRoutes role="admin" path="/admin/addjob" exact>
+                <CreateJob />
+            </ProtectedRoutes>
+            <ProtectedRoutes role="admin" path="/admin/jobs" exact>
+                <JobsList />
+            </ProtectedRoutes>
           <ProtectedRoutes role="user" path="/dashboard" exact>
             <Dashboard />
           </ProtectedRoutes>

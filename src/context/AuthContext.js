@@ -1,14 +1,30 @@
-import React, { createContext, useReducer } from 'react';
+import axios from 'axios';
+import React, { createContext, useReducer, useEffect } from 'react';
 
 
 const initialState = {
-    loggedIn: true,
+    loggedIn: false,
     role: "admin"
   };
   const authContext = createContext(initialState);
   const { Provider } = authContext;
   
   const AuthProvider = ({ children }) => {
+
+    useEffect(() => {
+      axios.get("/users/autoLogin")
+        .then(res => {
+          dispatch({type:"LOG_IN"});
+          dispatch({type:"SET_ROLE", payload: res.data.role});
+        }).catch(e => {
+          dispatch({type:"LOG_OUT"});
+          dispatch({type:"SET_ROLE", payload: ""});
+        })
+      return () => {
+        // 
+      }
+    }, [])
+
     const [state, dispatch] = useReducer((state, action) => {
       switch (action.type) {
         case "LOG_IN":

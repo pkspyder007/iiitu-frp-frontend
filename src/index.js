@@ -6,13 +6,24 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import { AuthProvider } from "./context/AuthContext";
+import { positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.withCredentials = true;
+
+const options = {
+  timeout: 5000,
+  position: positions.TOP_RIGHT,
+};
+
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
