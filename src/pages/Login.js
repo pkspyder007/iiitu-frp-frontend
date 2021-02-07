@@ -24,7 +24,6 @@ export default function Login() {
   
   const handleLogin = async e => {
       e.preventDefault();
-
       try {
           const {data} = await axios.post("/users/login", user);
           dispatch({ type: "SET_ROLE", payload: data.role})

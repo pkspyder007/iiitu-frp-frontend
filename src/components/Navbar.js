@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2 shadow ">
+    <>
+    <header className="w-full lg:px-16 px-6 h-16 bg-white flex flex-wrap items-center lg:py-0 py-2 shadow n-100">
       <div className="flex-1 flex justify-between items-center">
         <Link to="/">
             <h3 className="text-xl font-bold text-indigo-500">IIIT UNA</h3>
@@ -24,7 +25,7 @@ export default function Navbar() {
       </label>
       <input className="hidden" type="checkbox" id="menu-toggle" />
 
-      <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+      <div className="hidden lg:flex lg:items-center lg:w-auto w-full br-white" id="menu">
         <nav>
           <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
           <li>
@@ -81,5 +82,6 @@ export default function Navbar() {
         </nav>
       </div>
     </header>
+    </>
   );
 }

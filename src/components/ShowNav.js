@@ -1,7 +1,8 @@
 import React, {useContext} from 'react'
 import { authContext } from '../context/AuthContext'
 import Navbar from "./Navbar";
-import SideNav from './SideNav/SideNav';
+import AdminSideNav from './SideNav/AdminSideNav';
+import UserSideNav from './SideNav/UserSideNav';
 
 export default function ShowNav() {
     const { state: auth } = useContext(authContext);
@@ -10,8 +11,8 @@ export default function ShowNav() {
         return (<Navbar />)
 
     if(auth.loggedIn && auth.role === "admin")
-     return <SideNav />
+     return <AdminSideNav />
     
      if(auth.loggedIn && auth.role === "user")
-     return <div>User Nav</div>
+     return <UserSideNav />
 }

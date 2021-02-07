@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SideNavItem from "./SideNavItem";
 
-export default function SideNav() {
+export default function UserSideNav() {
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
   const handleToggle = () => setIsOpen(!isOpen);
@@ -23,7 +23,7 @@ export default function SideNav() {
             <path d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        <p className="h-auto w-24">ADMIN</p>
+        <p className="h-auto w-24">APPLICANT</p>
       </div>
       <div className="flex items-center ml-auto">
         <div className="hidden md:block md:flex md:justify-between md:bg-transparent">
@@ -74,7 +74,7 @@ export default function SideNav() {
         </span>
         <SideNavItem
           handleClose={handleClose}
-          link="/admin/"
+          link="/dashboard/"
           title="Home"
           svgIcon={
             <svg
@@ -92,21 +92,18 @@ export default function SideNav() {
         />
         <SideNavItem
           handleClose={handleClose}
-          link="/admin/jobs"
+          link="/jobs"
           title="All Jobs"
           svgIcon={null}
         />
-        <SideNavItem
+        {/* <SideNavItem
           handleClose={handleClose}
           link="/admin/addjob"
           title="New Job"
           svgIcon={null}
-        />
+        /> */}
         </div>
         <div className="w-full">
-          <button className="flex items-center p-4 text-white bg-blue-500 hover:bg-blue-600 w-full">
-            <span>Settings</span>
-          </button>
           <button className="flex items-center p-4 text-white bg-red-500 hover:bg-red-600 w-full">
             <span>Logout</span>
           </button>
