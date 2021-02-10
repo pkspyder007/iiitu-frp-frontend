@@ -4,15 +4,15 @@ import Navbar from "./Navbar";
 import AdminSideNav from './SideNav/AdminSideNav';
 import UserSideNav from './SideNav/UserSideNav';
 
-export default function ShowNav() {
+export default function ShowNav( props ) {
     const { state: auth } = useContext(authContext);
 
     if(!auth.loggedIn)
-        return (<Navbar />)
+        return (<Navbar {...props} />)
 
     if(auth.loggedIn && auth.role === "admin")
-     return <AdminSideNav />
+     return <AdminSideNav {...props} />
     
      if(auth.loggedIn && auth.role === "user")
-     return <UserSideNav />
+     return <UserSideNav {...props} />
 }

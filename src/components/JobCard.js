@@ -1,7 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+// import { createApp } from "../../../controllers/application";
 
-export default function JobCard({ id, title, dept, desc, adNo, school, isExpired, docLink }) {
+export default function JobCard({
+  id,
+  title,
+  dept,
+  desc,
+  adNo,
+  school,
+  isExpired,
+  docLink,
+}) {
+  const history = useHistory();
+  const createApp = (id, adNo) => {
+    if (window.confirm("Are you sure to apply for this job?")) {
+      axios
+        .post("/applications/create", {adNo, jobId: id})
+        .then((res) => {
+          alert(res.data.msg);
+          history.push(`/dashboard/application/personal/${id}`);
+        })
+        .catch((err) => alert(err));
+    }
+  };
+
   return (
     <div>
       <div className="container mt-12 mx-auto p-4 md:p-0 ">
@@ -40,12 +64,12 @@ export default function JobCard({ id, title, dept, desc, adNo, school, isExpired
                 </div>
 
                 <div className="rounded-md shadow mt-4">
-                  <Link
-                    to={`/jobs/${id}`}
+                  <button
+                    onClick={() => createApp(id, adNo)}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                   >
                     Apply @ IIITU
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

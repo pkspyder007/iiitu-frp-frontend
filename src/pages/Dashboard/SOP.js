@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import SecondaryInput from "../../components/SecondaryInput";
+import AppLayout from "./AppLayout";
 
 const initState = {
   sop: "",
@@ -28,12 +29,37 @@ export default function SOP() {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
+  
+  const onSubmit = (e) => {
+    e.preventDefault();
+    let data = new FormData();
+    for (let [key, value] of Object.entries(state)) {
+      data.append(key, value);
+    }
+
+    axios
+      .post(`/applications/${appId}/sop`, data)
+      .then((res) => {
+        alert.success(res.data.msg);
+        resetForm();
+      })
+      .catch((err) => {
+        alert.error(err.response?.data.msg);
+        if (err.response?.data.errors) {
+          err.response?.data.errors.map((e) => alert.error(e.message));
+        }
+      });
+  };
+
+
   return (
-    <form id="sopform">
-      <div className="editor mx-auto mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-    
-<label htmlFor="sop" className="text-sm mb-1">
-         STATEMENT OF PURPOSE(Please see note section)<span className="text-red-500">*</span>
+    <AppLayout>
+    <form id="sopform" onSubmit={onSubmit}>
+      <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+      <h1 className="text-2xl text-indigo-600 mb-4">STATEMENT OF PURPOSE (SOP) </h1>
+        <label htmlFor="sop" className="text-sm mb-1">
+          STATEMENT OF PURPOSE(Please see note section)
+          <span className="text-red-500">*</span>
         </label>
         <textarea
           onChange={onChangeHandler}
@@ -44,16 +70,15 @@ export default function SOP() {
           required={true}
           className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
         ></textarea>
-        
+
         <label htmlFor="doc" className="text-sm mb-1">
           Please Upload SOP<span className="text-red-500">*</span>
         </label>
         <SecondaryInput
-          onChange={onChangeHandler}
+          onChange={onFileChangeHandler}
           id="doc"
           name="doc"
           type="file"
-          value={state.doc}
           required={true}
         />
 
@@ -75,5 +100,6 @@ export default function SOP() {
         </div>
       </div>
     </form>
+    </AppLayout>
   );
 }

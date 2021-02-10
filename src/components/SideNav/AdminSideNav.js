@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logout from "../../utils/logout";
 import SideNavItem from "./SideNavItem";
 
 export default function AdminSideNav() {
@@ -107,7 +108,7 @@ export default function AdminSideNav() {
           <button className="flex items-center p-4 text-white bg-blue-500 hover:bg-blue-600 w-full">
             <span>Settings</span>
           </button>
-          <button className="flex items-center p-4 text-white bg-red-500 hover:bg-red-600 w-full">
+          <button onClick={logout} className="flex items-center p-4 text-white bg-red-500 hover:bg-red-600 w-full">
             <span>Logout</span>
           </button>
         </div>

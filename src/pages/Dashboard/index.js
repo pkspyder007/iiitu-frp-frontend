@@ -1,22 +1,21 @@
-import React from 'react'
-import AcadExp from './AcadExp'
-import BestPapers from './Bestpapers'
-import Education from './Education'
-import General from './General'
-import OtherInfo from './OtherInfo'
-import Patents from './Patents'
-import PersonalInfo from './PersonalInfo'
-import Referees from './Referees'
-import ResearchPublication from './ResearchPublication'
-import SOP from './SOP'
-import SponsoredProject from './SponsoredProject'
-import ThesisSupervised from './ThesisSupervised'
+import React, {useState, useEffect} from 'react'
+import axios from "axios";
 
 export default function Dashboard() {
+    const [state, setState] = useState([]);
+
+    useEffect(() => {
+        axios.get("/users/getAllApplications")
+            .then(({data}) => {
+                setState(data);
+                console.log(data);
+            }).catch(err => {
+
+            })
+    }, [])
     return (
         <div>
             DAshboard
-            <Referees />
         </div>
     )
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import SecondaryInput from "../../components/SecondaryInput";
+import AppLayout from "./AppLayout";
 
 const initState = {
   org: "",
@@ -19,7 +20,8 @@ export default function AcadExp() {
   const [state, setState] = useState(initState);
   const { appId } = useParams();
   const alert = useAlert();
-
+  
+  console.log(appId);
   const resetForm = () => {
     let form = document.querySelector("#acadexpform");
     form.reset();
@@ -34,10 +36,33 @@ export default function AcadExp() {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
+  
+  const onSubmit = (e) => {
+    e.preventDefault();
+    let data = new FormData();
+    for(let [key, value] of Object.entries(state)) {
+      data.append(key, value);
+    }
+
+    axios
+      .post(`/applications/${appId}/acadexp`, data, {
+      })
+      .then((res) => {
+        alert.success(res.data.msg);
+        resetForm();
+      }).catch(err => {
+        alert.error(err.response?.data.msg)
+        if(err.response?.data.errors) {
+          err.response?.data.errors.map(e => alert.error(e.message))
+        }
+      })
+  };
+
   return (
-    <>
-      <form id="acadexpform">
-        <div className="editor mx-auto mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+    <AppLayout>
+      <form id="acadexpform" onSubmit={onSubmit}>
+        <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+        <h1 className="text-2xl text-indigo-600 mb-4">Academic Experience</h1>
           <label htmlFor="org" className="text-sm mb-1">
             University / Organisation<span className="text-red-500">*</span>
           </label>
@@ -121,13 +146,11 @@ export default function AcadExp() {
             NOC/Experience<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
-            onChange={onChangeHandler}
+            onChange={onFileChangeHandler}
             id="doc"
             name="doc"
-            type="text"
-            value={state.doc}
+            type="file"
             required={true}
-            placeholder={"NOC/Experience"}
           />
 
           <div className="buttons flex mt-8">
@@ -148,6 +171,6 @@ export default function AcadExp() {
           </div>
         </div>
       </form>
-    </>
+    </AppLayout>
   );
 }
