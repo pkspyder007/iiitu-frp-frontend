@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-// import { createApp } from "../../../controllers/application";
 
 export default function JobCard({
   id,
@@ -46,14 +45,14 @@ export default function JobCard({
               <div className="bg-white lg:h-full p-6 -mt-6 md:mt-0 relative mb-4 md:mb-0 flex flex-wrap md:flex-wrap items-center rounded">
                 <div className="w-full lg:w-2/5 lg:border-right lg:border-solid text-center md:text-left ">
                   <h3 className="font-semibold">{title}</h3>
-                  <p className="mb-0 mt-3 text-grey-dark text-sm italic">
-                    <div class="ml-4 mb-1 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
+                  <div className="mb-0 mt-3 text-grey-dark text-sm italic">
+                    <div className="ml-4 mb-1 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
                       {dept}
                     </div>
-                    <div class="ml-4 mb-1 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
+                    <div className="ml-4 mb-1 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full">
                       {school}
                     </div>
-                  </p>
+                  </div>
                   <hr className="w-1/6 md:ml-0 mt-4  border lg:hidden" />
                 </div>
 

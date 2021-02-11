@@ -3,7 +3,6 @@ import axios from "axios";
 import { useAlert } from "react-alert";
 import { useParams } from "react-router-dom";
 import SecondaryInput from "../../components/SecondaryInput";
-import ApplicationSteps from "../../components/ApplicationSteps";
 import AppLayout from "./AppLayout";
 
 const initState = {

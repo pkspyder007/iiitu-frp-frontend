@@ -19,8 +19,8 @@ export default function BestPapers() {
 
   const resetForm = () => {
     let form = document.querySelector("#bpform");
-    // form.reset();
-    // setState(initState);
+    form.reset();
+    setState(initState);
   };
 
   const onFileChangeHandler = (e) => {

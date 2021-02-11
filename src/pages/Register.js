@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { BtnLg } from "../components/Buttons";
 import Input from "../components/Input";
 import { useAlert } from "react-alert";
+import { authContext } from "../context/AuthContext";
 
 const initState = {
   name: "",
@@ -13,12 +14,25 @@ const initState = {
 };
 
 export default function Register() {
+  const auth = React.useContext(authContext).state;
+  let history = useHistory();
   const [user, setUser] = useState(initState);
   const alert = useAlert();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    if (auth.loggedIn) {
+      if (auth.role === "user") {
+        history.push("/dashboard");
+      } else if (auth.role === "admin") {
+        history.push("/admin");
+      }
+    }
+  }, [auth.loggedIn, auth.role, history]);
+
 
   const handleRegister = async (e) => {
     e.preventDefault();

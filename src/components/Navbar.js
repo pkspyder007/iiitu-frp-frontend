@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <>
-    <header className="w-full lg:px-16 px-6 h-16 bg-white flex flex-wrap items-center lg:py-0 py-2 shadow n-100">
+    <header className="w-full lg:px-16 px-6 h-16 bg-white flex flex-wrap items-center lg:py-0 py-2 shadow">
       <div className="flex-1 flex justify-between items-center">
         <Link to="/">
             <h3 className="text-xl font-bold text-indigo-500">IIIT UNA</h3>

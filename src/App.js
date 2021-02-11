@@ -26,6 +26,7 @@ import General from "./pages/Dashboard/General";
 import Referees from "./pages/Dashboard/Referees";
 import IndustryExp from "./pages/Dashboard/IndustryExp";
 import FuturePlans from "./pages/Dashboard/FuturePlans";
+import AppOverview from "./pages/Dashboard/AppOverview";
 
 function App() {
   return (
@@ -64,6 +65,13 @@ function App() {
           </ProtectedRoutes>
           <ProtectedRoutes role="user" path="/dashboard" exact>
             <Dashboard />
+          </ProtectedRoutes>
+          <ProtectedRoutes
+            role="user"
+            path="/dashboard/application/overview/:appId"
+            exact={true}
+          >
+            <AppOverview />
           </ProtectedRoutes>
           <ProtectedRoutes
             role="user"

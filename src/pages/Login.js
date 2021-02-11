@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { BtnLg } from "../components/Buttons";
 import Input from "../components/Input";
 import { useAlert } from "react-alert";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 import { authContext } from "../context/AuthContext";
 
 const initState = {
@@ -13,28 +12,42 @@ const initState = {
 };
 
 export default function Login() {
+  const auth = React.useContext(authContext).state;
+  let history = useHistory();
   const [user, setUser] = useState(initState);
   const alert = useAlert();
-  let history = useHistory();
   let { dispatch } = useContext(authContext);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  
-  const handleLogin = async e => {
-      e.preventDefault();
-      try {
-          const {data} = await axios.post("/users/login", user);
-          dispatch({ type: "SET_ROLE", payload: data.role})
-          dispatch({ type: "LOG_IN" })
-          alert.success("Log In successful.");
-          history.push("/")
-      } catch (error) {
-        if(error.response)
-          alert.error(error.response.data.msg);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("/users/login", user);
+      dispatch({ type: "SET_ROLE", payload: data.role });
+      dispatch({ type: "LOG_IN" });
+      alert.success("Log In successful.");
+      if (data.role === "user") {
+        history.push("/dashboard");
+      } else if (auth.role === "admin") {
+        history.push("/admin");
       }
-  }
+    } catch (error) {
+      if (error.response) alert.error(error.response.data.msg);
+    }
+  };
+
+  useEffect(() => {
+    if (auth.loggedIn) {
+      if (auth.role === "user") {
+        history.push("/dashboard");
+      } else if (auth.role === "admin") {
+        history.push("/admin");
+      }
+    }
+  }, [auth.loggedIn, auth.role, history]);
 
   return (
     <div className="lg:flex">

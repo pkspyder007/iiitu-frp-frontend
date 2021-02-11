@@ -11,7 +11,6 @@ const initState = {
   corAddress: "",
   phone: "",
   fax: "",
-  name: "",
   email: "",
   appId: "",
 };

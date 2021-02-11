@@ -5,7 +5,10 @@ import JobCard from "../components/JobCard";
 
 export default function AllJobs() {
   const [jobs, setJobs] = useState([]);
-  const alert = useAlert();
+  const ref = React.useRef();
+  ref.current = useAlert();
+  const alert = ref.current; 
+
 
   useEffect(() => {
     axios
