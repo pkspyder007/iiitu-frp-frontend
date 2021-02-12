@@ -35,7 +35,7 @@ export default function AppOverview() {
     Referees,
     Research,
     SOP,
-    Thesis
+    Thesis,
   } = state;
 
   return !state.id ? (
@@ -70,7 +70,7 @@ export default function AppOverview() {
           <Info label="Secondary Fax" text={PersonalDetail.sexFax} />
           <Info label="Sex" text={PersonalDetail.sex} />
           <Link to={`/dashboard/application/personal/${appId}/`}>
-          <button>Enter Details</button>
+            <button>Enter Details</button>
           </Link>
         </div>
       )}
@@ -94,9 +94,9 @@ export default function AppOverview() {
               <hr className="my-6" />
             </div>
           ))}
-          <Link to={`/dashboard/application/acadexp/${appId}/`}>
+        <Link to={`/dashboard/application/acadexp/${appId}/`}>
           <button>Enter Details</button>
-          </Link>
+        </Link>
       </div>
 
       {/* Acad Qua */}
@@ -123,7 +123,7 @@ export default function AppOverview() {
       {/* Industry Experience */}
       <div className="flex flex-col justify-center shadow mx-12 p-4">
         <h1 className="text-indigo-600 text-lg font-bold">
-        Industry Experience
+          Industry Experience
         </h1>
         <hr className="my-3" />
         {IndustryExps &&
@@ -143,122 +143,119 @@ export default function AppOverview() {
       </div>
 
       {/* Best Papers */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-        Industry Experience
-        </h1>
-        <hr className="my-3" />
-        {BestPaper &&
-            (<div key={BestPaper.id}>
+      {BestPaper && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Best Papers</h1>
+          <hr className="my-3" />
+          {BestPaper && (
+            <div key={BestPaper.id}>
               <Info label="Id" text={BestPaper.id} />
               {/* <Info label="Salary" text={e.salary} /> */}
 
               <hr className="my-6" />
             </div>
           )}
-      </div>
+        </div>
+      )}
 
       {/* Future Plans */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-        Future Plans
-        </h1>
-        <hr className="my-3" />
-        {FuturePlan &&
-            (<div key={FuturePlan.id}>
+      {FuturePlan && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Future Plans</h1>
+          <hr className="my-3" />
+          {FuturePlan && (
+            <div key={FuturePlan.id}>
               <Info label="Id" text={FuturePlan.id} />
               {/* <Info label="Salary" text={e.salary} /> */}
 
               <hr className="my-6" />
             </div>
           )}
-      </div>
+        </div>
+      )}
 
-        {/* General Questions */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-        General Questions
-        </h1>
-        <hr className="my-3" />
-        {GeneralQue.one && (
-            <Info label="Ques 1" text={GeneralQue.one} />
-        )}
-        {GeneralQue.two && (
-            <Info label="Ques 2" text={GeneralQue.two} />
-        )}
-        {GeneralQue.three && (
-            <Info label="Ques 3" text={GeneralQue.three} />
-        )}
-        {GeneralQue.four && (
-            <Info label="Ques 4" text={GeneralQue.four} />
-        )}
-        {GeneralQue.five && (
-            <Info label="Ques 5" text={GeneralQue.five} />
-        )}
-       
-      </div>
+      {/* General Questions */}
+      {GeneralQue && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4">
+          <h1 className="text-indigo-600 text-lg font-bold">
+            General Questions
+          </h1>
+          <hr className="my-3" />
+          {GeneralQue.one && <Info label="Ques 1" text={GeneralQue.one} />}
+          {GeneralQue.two && <Info label="Ques 2" text={GeneralQue.two} />}
+          {GeneralQue.three && <Info label="Ques 3" text={GeneralQue.three} />}
+          {GeneralQue.four && <Info label="Ques 4" text={GeneralQue.four} />}
+          {GeneralQue.five && <Info label="Ques 5" text={GeneralQue.five} />}
+        </div>
+      )}
 
       {/* Other Information */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-        Other Information
-        </h1>
-        <hr className="my-3" />
-        {OtherInfo.awards && (
-            <Info label="Awards" text={"award"} />
-        )}
-        {OtherInfo.extraCirricular && (
+      {OtherInfo && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4">
+          <h1 className="text-indigo-600 text-lg font-bold">
+            Other Information
+          </h1>
+          <hr className="my-3" />
+          {OtherInfo.awards && <Info label="Awards" text={"award"} />}
+          {OtherInfo.extraCirricular && (
             <Info label="Extra Cirricular" text={"EX"} />
-        )}
-        {OtherInfo.membership && (
+          )}
+          {OtherInfo.membership && (
             <Info label="Membership" text={OtherInfo.membership} />
-        )}
-        {OtherInfo.special && (
+          )}
+          {OtherInfo.special && (
             <Info label="Special" text={OtherInfo.special} />
-        )}
-        {OtherInfo.others && (
-            <Info label="Others" text={OtherInfo.others} />
-        )}
-      </div>
+          )}
+          {OtherInfo.others && <Info label="Others" text={OtherInfo.others} />}
+        </div>
+      )}
 
       {/* Ptensts */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-        Patents
-        </h1>
-        <hr className="my-3" />
-        {Patent.noOfPatents !== "0" && (
+      {Patent && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Patents</h1>
+          <hr className="my-3" />
+          {Patent.noOfPatents !== "0" && (
             <Info label="Number Of Patents" text={Patent.noOfPatents} />
-        )}
-        {Patent.list && (
-            <Info label="List" text={Patent.list} />
-        )}
-      </div>
+          )}
+          {Patent.list && <Info label="List" text={Patent.list} />}
+        </div>
+      )}
 
-        {/* Publications */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-        Research Publications
-        </h1>
-        <hr className="my-3" />
-        {(
-            <Info label="Number Of books" text={`${Publication.books}`} />
-        )}
-        {(
-            <Info label="Number Of National conferences" text={`${Publication.nConf}`} />
-        )}
-        {(
-            <Info label="Number Of international conferences" text={`${Publication.iConf}`} />
-        )}
-        {(
-            <Info label="Number Of National journals" text={`${Publication.nJournals}`} />
-        )}
-        {(
-            <Info label="Number Of international journals" text={`${Publication.iJournals}`} />
-        )}
-      </div>
-
-
+      {/* Publications */}
+      {Publication && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4">
+          <h1 className="text-indigo-600 text-lg font-bold">
+            Research Publications
+          </h1>
+          <hr className="my-3" />
+          {<Info label="Number Of books" text={`${Publication.books}`} />}
+          {
+            <Info
+              label="Number Of National conferences"
+              text={`${Publication.nConf}`}
+            />
+          }
+          {
+            <Info
+              label="Number Of international conferences"
+              text={`${Publication.iConf}`}
+            />
+          }
+          {
+            <Info
+              label="Number Of National journals"
+              text={`${Publication.nJournals}`}
+            />
+          }
+          {
+            <Info
+              label="Number Of international journals"
+              text={`${Publication.iJournals}`}
+            />
+          }
+        </div>
+      )}
     </div>
   );
 }
