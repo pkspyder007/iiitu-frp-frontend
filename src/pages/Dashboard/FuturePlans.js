@@ -51,7 +51,7 @@ export default function FururePlans() {
     <AppLayout>
     <form id="sopform" onSubmit={onSubmit}>
       <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-      <h1 className="text-2xl text-indigo-600 mb-4">Other Information </h1>
+      <h1 className="text-2xl text-indigo-600 mb-4">Future Plans </h1>
       <hr/>
         <label htmlFor="doc" className="text-sm mb-1">
           Research Plan for the next five years <br />( Provide a three page
