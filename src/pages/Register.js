@@ -14,7 +14,7 @@ const initState = {
 };
 
 export default function Register() {
-  const auth = React.useContext(authContext).state;
+  const auth = useContext(authContext).state;
   let history = useHistory();
   const [user, setUser] = useState(initState);
   const alert = useAlert();

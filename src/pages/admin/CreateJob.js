@@ -49,7 +49,7 @@ export default function CreateJob() {
     }
   };
 
-  const { title, dept, desc, adNo, school, docLink } = job;
+  const { title, desc, adNo, docLink } = job;
   return (
     <div>
       <div className="heading text-center font-bold text-2xl m-5 text-gray-800">
@@ -65,7 +65,7 @@ export default function CreateJob() {
             placeholder="Job Title"
             required={true}
           />
-          <select
+          {/* <select
             name="dept"
             value={dept}
             onChange={handleChange}
@@ -76,7 +76,79 @@ export default function CreateJob() {
             <option value="cse">CSE</option>
             <option value="ece">ECE</option>
             <option value="it">IT</option>
-          </select>
+          </select> */}
+          <strong className="mb-1 text-gray-700">Departments</strong>
+          <div className="inline-flex">
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">CSE</strong>
+            </label>
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">IT</strong>
+            </label>
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">ECE</strong>
+            </label>
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">BIO-TECHNOLOGY</strong>
+            </label>
+            <label class="inline-flex items-center mb-3 v">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">CHEMISTRY</strong>
+            </label>
+          </div>
+
+          <strong className="mb-1 text-gray-700">Schools</strong>
+          <div className="inline-flex">
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">Computing</strong>
+            </label>
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">Electronics</strong>
+            </label>
+            <label class="inline-flex items-center mb-3 mr-3">
+              <input
+                type="checkbox"
+                name="cse"
+                class="form-checkbox h-5 w-5 text-red-600"
+              />
+              <strong class="ml-2 text-gray-700">Basic Science</strong>
+            </label>
+          </div>
+
           <textarea
             name="desc"
             value={desc}
@@ -96,7 +168,7 @@ export default function CreateJob() {
             required={true}
           />
 
-          <select
+          {/* <select
             name="school"
             value={school}
             onChange={handleChange}
@@ -107,7 +179,7 @@ export default function CreateJob() {
             <option value="soc">School of Computing</option>
             <option value="soe">School of Electronics</option>
             <option val="sobs">School of Basic Science</option>
-          </select>
+          </select> */}
 
           <SecondaryInput
             name="docLink"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
@@ -51,6 +51,33 @@ export default function BestPapers() {
 
   return (
     <AppLayout>
+      <div className="flex justify-around mb-2 p-3 border">
+        <Link to={`/dashboard/application/research/${appId}`}>
+          <button className="border-b-4 p-2 text-white font-bold bg-indigo-600">
+            Publications
+          </button>
+        </Link>
+        <Link to={`/dashboard/application/sp/${appId}`}>
+          <button className="border-b-4  p-2 text-white font-bold bg-indigo-600">
+            Sponsered Projects
+          </button>
+        </Link>
+        <Link to={`/dashboard/application/thesis/${appId}`}>
+          <button className="border-b-4  p-2 text-white font-bold bg-indigo-600">
+            Thesis
+          </button>
+        </Link>
+        <Link to={`/dashboard/application/bestpapers/${appId}`}>
+          <button className="border-b-4 border-black p-2 text-white font-bold bg-indigo-600">
+            Best Papers
+          </button>
+        </Link>
+        <Link to={`/dashboard/application/patents/${appId}`}>
+          <button className="border-b-4  p-2 text-white font-bold bg-indigo-600">
+            Patents
+          </button>
+        </Link>
+      </div>
       <form id="bpform" onSubmit={onSubmit}>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
           <h1 className="text-2xl text-indigo-600 mb-4">Three Best Papers</h1>

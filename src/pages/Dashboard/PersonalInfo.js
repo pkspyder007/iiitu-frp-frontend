@@ -56,6 +56,7 @@ export default function PersonalInfo() {
       .post(`/applications/${appId}/personalInfo`, data, {})
       .then((res) => {
         alert.success(res.data.msg);
+        resetForm();
       })
       .catch((err) => {
         alert.error(err.response.data.msg);
@@ -149,7 +150,7 @@ export default function PersonalInfo() {
           ></textarea>
 
           <label htmlFor="secPhone" className="text-sm mb-1">
-            Secondary Phone
+            Alternate Phone
           </label>
           <SecondaryInput
             id="secPhone"
@@ -157,11 +158,11 @@ export default function PersonalInfo() {
             value={state.secPhone}
             onChange={onChangeHandler}
             type="text"
-            placeholder="Secondary Phone *"
+            placeholder="Alternate Phone *"
           />
 
           <label htmlFor="secFax" className="text-sm mb-1">
-            Secondary Fax
+          Alternate Fax
           </label>
 
           <SecondaryInput
@@ -174,7 +175,7 @@ export default function PersonalInfo() {
           />
 
           <label htmlFor="secEmail" className="text-sm mb-1">
-            Secondary Email
+          Alternate Email
           </label>
           <SecondaryInput
             id="secEmail"
@@ -182,11 +183,11 @@ export default function PersonalInfo() {
             value={state.secEmail}
             onChange={onChangeHandler}
             type="email"
-            placeholder="Secondary Email *"
+            placeholder="Alternate Email *"
           />
 
           <label htmlFor="DOB" className="text-sm mb-1">
-            Date Of Birth <span className="text-red-500">*</span>
+            Date of Birth <span className="text-red-500">*</span>
           </label>
 
           <SecondaryInput
@@ -218,7 +219,7 @@ export default function PersonalInfo() {
           </select>
 
           <label htmlFor="sex" className="text-sm mb-1">
-            Sex <span className="text-red-500">*</span>
+            Gender <span className="text-red-500">*</span>
           </label>
           <select
             name="sex"
@@ -227,7 +228,7 @@ export default function PersonalInfo() {
             required={true}
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
-            <option value="">SEX</option>
+            <option value="">GENDER</option>
             <option value="MALE">MALE</option>
             <option value="FEMALE">FEMALE</option>
             <option value="TRANSGENDER">TRANSGENDER</option>
@@ -312,7 +313,7 @@ export default function PersonalInfo() {
           />
 
           <label htmlFor="pwdDoc" className="text-sm mb-1">
-            Photograph <span className="text-red-500">*</span>
+            Recent Photograph <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onFileChangeHandler}

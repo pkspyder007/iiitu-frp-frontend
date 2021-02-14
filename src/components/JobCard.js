@@ -1,29 +1,15 @@
 import React from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function JobCard({
   id,
   title,
   dept,
   desc,
-  adNo,
   school,
-  isExpired,
-  docLink,
 }) {
   const history = useHistory();
-  const createApp = (id, adNo) => {
-    if (window.confirm("Are you sure to apply for this job?")) {
-      axios
-        .post("/applications/create", {adNo, jobId: id})
-        .then((res) => {
-          alert(res.data.msg);
-          history.push(`/dashboard/application/personal/${id}`);
-        })
-        .catch((err) => alert(err));
-    }
-  };
 
   return (
     <div>
@@ -63,12 +49,13 @@ export default function JobCard({
                 </div>
 
                 <div className="rounded-md shadow mt-4">
-                  <button
-                    onClick={() => createApp(id, adNo)}
+                  <Link
+                  to={`/jobs/apply/${id}`}
+                    // onClick={() => createApp(id, adNo)}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                   >
                     Apply @ IIITU
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

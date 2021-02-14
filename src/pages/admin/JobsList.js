@@ -17,7 +17,7 @@ export default function JobsList() {
       .catch((error) => {
         alert.error("Something went wrong. \n" + error.response.data.error);
       });
-  }, []);
+  }, [alert]);
   return (
     <div className="flex flex-col w-4/5 mx-auto">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -91,7 +91,7 @@ export default function JobsList() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <a
-                          href="#"
+                          href="/nowhere"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
                           Edit

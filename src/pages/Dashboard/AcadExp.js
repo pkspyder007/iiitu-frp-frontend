@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
@@ -60,6 +60,14 @@ export default function AcadExp() {
 
   return (
     <AppLayout>
+      <div className="flex justify-around mb-2 p-3 border">
+        <Link to={`/dashboard/application/acadexp/${appId}`}>
+          <button className="border-b-4 border-black p-2 text-white font-bold bg-indigo-600">Academic Experience</button>
+        </Link>
+        <Link to={`/dashboard/application/indexp/${appId}`}>
+          <button className="border-b-4 p-2 text-white font-bold bg-indigo-600">Industry Experience</button>
+        </Link>
+      </div>
       <form id="acadexpform" onSubmit={onSubmit}>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
         <h1 className="text-2xl text-indigo-600 mb-4">Academic Experience</h1>
@@ -116,7 +124,7 @@ export default function AcadExp() {
           />
 
           <label htmlFor="salary" className="text-sm mb-1">
-            Salary<span className="text-red-500">*</span>
+            Monthly Salary<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}

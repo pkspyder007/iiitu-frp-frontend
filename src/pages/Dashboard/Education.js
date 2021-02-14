@@ -36,27 +36,29 @@ export default function Education() {
   const onSubmit = (e) => {
     e.preventDefault();
     let data = new FormData();
-    for(let [key, value] of Object.entries(state)) {
+    for (let [key, value] of Object.entries(state)) {
       data.append(key, value);
     }
 
     axios
-      .post(`/applications/${appId}/education`, data, {
-      })
+      .post(`/applications/${appId}/education`, data, {})
       .then((res) => {
         alert.success(res.data.msg);
-      }).catch(err => {
-        alert.error(err.response.data.msg)
-        if(err.response.data.errors) {
-          err.response.data.errors.map(e => alert.error(e.message))
-        }
       })
+      .catch((err) => {
+        alert.error(err.response.data.msg);
+        if (err.response.data.errors) {
+          err.response.data.errors.map((e) => alert.error(e.message));
+        }
+      });
   };
 
   return (
     <AppLayout>
       <form id="eduform" onSubmit={onSubmit}>
-      <h1 className="text-2xl text-indigo-600 mb-4">Academic Qualifications</h1>
+        <h1 className="text-2xl text-indigo-600 mb-4">
+          Academic Qualifications
+        </h1>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
           <label htmlFor="education" className="text-sm mb-1">
             School/College Education <span className="text-red-500">*</span>
@@ -70,16 +72,18 @@ export default function Education() {
             required={true}
             placeholder="School/College Education"
           >
+            <option value="">Select Education</option>
+            <option value="10th">10th / Matriculation</option>
             <option value="10th">10th / Matriculation</option>
             <option value="10+2">10+2 / Higher Secondary</option>
             <option value="UG">Under Graduate (U.G.)</option>
-            <option value="PD">Post Graduate (U.G.)</option>
+            <option value="PD">Post Graduate (P.G.)</option>
             <option value="PHD">Doctor of Philosophy (PhD)</option>
             <option value="OTHER">Other</option>
           </select>
 
           <label htmlFor="subject" className="text-sm mb-1">
-            School/College Education <span className="text-red-500">*</span>
+            Subject/Specialization <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
@@ -89,6 +93,19 @@ export default function Education() {
             value={state.subject}
             required={true}
             placeholder={"Subject Specialization"}
+          />
+
+          <label htmlFor="insitution" className="text-sm mb-1">
+            Board/University/Institution <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            onChange={onChangeHandler}
+            id="institution"
+            name="institution"
+            type="text"
+            value={state.institution}
+            required={true}
+            placeholder={"Board/University/Institution"}
           />
 
           <label htmlFor="year" className="text-sm mb-1">
@@ -104,20 +121,7 @@ export default function Education() {
             step="1"
             value={state.year}
             required={true}
-            placeholder={"Year of completion"}
-          />
-
-          <label htmlFor="insitution" className="text-sm mb-1">
-            Board/University/Institution <span className="text-red-500">*</span>
-          </label>
-          <SecondaryInput
-            onChange={onChangeHandler}
-            id="institution"
-            name="institution"
-            type="text"
-            value={state.institution}
-            required={true}
-            placeholder={"Board/University/Institution"}
+            placeholder={"Year of Completion"}
           />
 
           <label htmlFor="percentage" className="text-sm mb-1">
@@ -134,7 +138,7 @@ export default function Education() {
           />
 
           <label htmlFor="doc" className="text-sm mb-1">
-            Degree / Certificate<span className="text-red-500">*</span>
+            Degree / Certificate (Upload PDF)<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onFileChangeHandler}
