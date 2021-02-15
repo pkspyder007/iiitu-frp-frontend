@@ -74,10 +74,9 @@ export default function Education() {
           >
             <option value="">Select Education</option>
             <option value="10th">10th / Matriculation</option>
-            <option value="10th">10th / Matriculation</option>
             <option value="10+2">10+2 / Higher Secondary</option>
             <option value="UG">Under Graduate (U.G.)</option>
-            <option value="PD">Post Graduate (P.G.)</option>
+            <option value="PG">Post Graduate (P.G.)</option>
             <option value="PHD">Doctor of Philosophy (PhD)</option>
             <option value="OTHER">Other</option>
           </select>

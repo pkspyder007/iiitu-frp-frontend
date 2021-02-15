@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { NavLink, useParams } from "react-router-dom";
+import { useAlert } from "react-alert";
+import axios from "axios";
 
 export default function AppLayout(props) {
+  const [state, setState] = useState({completed: true});
   const { appId } = useParams();
+  const alert = useAlert();
+
+  useEffect(() => {
+    axios
+      .get(`/applications/${appId}/`)
+      .then(({ data }) => {
+        setState(data.app);
+      })
+      .catch((err) => {
+        alert.error(err?.response?.data?.msg);
+      });
+  }, []);
   return (
     <div className="flex">
       <div className="flex flex-col w-1/6 h-screen bg-indigo-700">
-        <NavLink
+        {!state.completed && (<> <NavLink
           className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400"
           to={`/dashboard/application/personal/${appId}`}
         >
@@ -89,6 +104,19 @@ export default function AppLayout(props) {
           to={`/dashboard/application/referees/${appId}`}
         >
           Referees
+        </NavLink>
+        <NavLink
+          className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
+          to={`/dashboard/application/lock/${appId}`}
+        >
+          Lock Application
+        </NavLink>
+        </>)}
+        <NavLink
+          className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
+          to={`/dashboard/application/fees/${appId}`}
+        >
+          Fee Details
         </NavLink>
       </div>
       <div className="px-12"> {props.children}</div>

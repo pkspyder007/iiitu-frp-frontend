@@ -7,12 +7,17 @@ import SecondaryInput from "../components/SecondaryInput";
 const initState = {
   dept: "",
   school: "",
-  check: false
+  check: false,
 };
 
 export default function Apply() {
   const [job, setJob] = useState(initState);
-  const [jobDetails, setJobDetails] = useState({title: "", adNo: "", docLink: "", desc:""});
+  const [jobDetails, setJobDetails] = useState({
+    title: "",
+    adNo: "",
+    docLink: "",
+    desc: "",
+  });
   const alert = useAlert();
   let history = useHistory();
 
@@ -22,7 +27,7 @@ export default function Apply() {
     setJob({
       dept: "",
       school: "",
-      check: false
+      check: false,
     });
   };
 
@@ -30,7 +35,6 @@ export default function Apply() {
     axios
       .get(`/jobs/getById/${jobId}`)
       .then((res) => {
-        console.log(res.data);
         setJobDetails(res.data.job);
       })
       .catch((err) => alert.error(err));
@@ -45,22 +49,27 @@ export default function Apply() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(job);
-    if(!job.school || !job.dept) {
-        alert.error("Please select both Department and School");
-        return;
+    if (!job.school || !job.dept) {
+      alert.error("Please select both Department and School");
+      return;
     }
 
-    if(!job.check) {
+    if (!job.check) {
       alert.error("Please check the checkbox to confirm");
       return;
-  }
+    }
 
     try {
-        const { adNo, id, } = jobDetails;
-      const data = await axios.post("/applications/create", { adNo: adNo, jobId: id,  ...job, });
+      const { adNo, id } = jobDetails;
+      const data = await axios.post("/applications/create", {
+        adNo: adNo,
+        jobId: id,
+        ...job,
+      });
       alert.success("Job created successfully.");
-      history.push(`/dashboard/application/personal/${data.data.application.id}`);
+      history.push(
+        `/dashboard/application/personal/${data.data.application.id}`
+      );
     } catch (error) {
       console.log("ee", error);
       alert.error(`Something went wrong.`);
@@ -85,34 +94,6 @@ export default function Apply() {
             placeholder="Job Title"
             disabled={true}
           />
-          <select
-            name="dept"
-            value={dept}
-            onChange={handleChange}
-            required={true}
-            className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
-          >
-            <option value="">Select Department</option>
-            <option value="cse">CSE</option>
-            <option value="ece">ECE</option>
-            <option value="it">IT</option>
-            <option value="chemistry">Chemistry</option>
-            <option value="bio-tech">BioTech</option>
-          </select>
-
-          <textarea
-           defaultValue={desc}
-           className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-            disabled
-          ></textarea>
-
-          <SecondaryInput
-            name="adNo"
-            value={adNo}
-            type="text"
-            placeholder="Job Ad Number"
-            disabled={true}
-          />
 
           <select
             name="school"
@@ -124,22 +105,69 @@ export default function Apply() {
             <option value="">Select School</option>
             <option value="soc">School of Computing</option>
             <option value="soe">School of Electronics</option>
-            <option val="sobs">School of Basic Science</option>
+            <option value="sobs">School of Basic Science</option>
           </select>
 
+          <select
+            name="dept"
+            value={dept}
+            onChange={handleChange}
+            required={true}
+            className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
+          >
+            <option value="">Select Department</option>
+            {school === "soc" && (
+              <>
+                <option value="cse">CSE</option>
+                <option value="it">IT</option>
+              </>
+            )}
+            {school === "soe" && (
+              <>
+                <option value="ece">ECE</option>
+              </>
+            )}
+            {school === "sobs" && (
+              <>
+                <option value="chemistry">Chemistry</option>
+                <option value="biotech">BioTech</option>
+                <option value="physics">Physics</option>
+                <option value="mathematics">Mathematics</option>
+              </>
+            )}
+          </select>
+
+          <textarea
+            defaultValue={desc}
+            className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
+            disabled
+          ></textarea>
+
+          <SecondaryInput
+            name="adNo"
+            value={adNo}
+            type="text"
+            placeholder="Job Ad Number"
+            disabled={true}
+          />
+
           <p className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
-            <a href={docLink} target="__blank">Advertisement Link</a>
+            <a href={docLink} target="__blank">
+              Advertisement Link
+            </a>
           </p>
 
           <label class="inline-flex items-center mb-3 mr-3">
-              <input
-                type="checkbox"
-                name="check"
-                class="form-checkbox h-5 w-5 text-red-600"
-                onChange={handleChangeCheck}
-              />
-              <span class="ml-2 text-gray-700">I have gone through the detailed advertisement.</span>
-            </label>
+            <input
+              type="checkbox"
+              name="check"
+              class="form-checkbox h-5 w-5 text-red-600"
+              onChange={handleChangeCheck}
+            />
+            <span class="ml-2 text-gray-700">
+              I have gone through the detailed advertisement.
+            </span>
+          </label>
 
           <div className="icons flex text-gray-500 m-2"></div>
           <div className="buttons flex">

@@ -28,6 +28,8 @@ import IndustryExp from "./pages/Dashboard/IndustryExp";
 import FuturePlans from "./pages/Dashboard/FuturePlans";
 import AppOverview from "./pages/Dashboard/AppOverview";
 import Apply from "./pages/Apply";
+import LockApp from "./pages/Dashboard/LockApp";
+import FeeDetails from "./pages/Dashboard/FeeDetails";
 
 function App() {
   return (
@@ -174,6 +176,20 @@ function App() {
             path="/dashboard/application/referees/:appId"
           >
             <Referees />
+          </ProtectedRoutes>
+          <ProtectedRoutes
+            role="user"
+            exact={true}
+            path="/dashboard/application/lock/:appId"
+          >
+            <LockApp />
+          </ProtectedRoutes>
+          <ProtectedRoutes
+            role="user"
+            exact={true}
+            path="/dashboard/application/fees/:appId"
+          >
+            <FeeDetails />
           </ProtectedRoutes>
           <Route path="/" exact>
             <Home />
