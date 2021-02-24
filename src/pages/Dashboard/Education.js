@@ -12,6 +12,7 @@ const initState = {
   institution: "",
   percentage: "",
   doc: "",
+  mode:""
 };
 
 export default function Education() {
@@ -26,11 +27,16 @@ export default function Education() {
   };
 
   const onFileChangeHandler = (e) => {
+    
     setState({ ...state, [e.target.name]: e.target.files[0] });
   };
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = async (e) => {
+  
     setState({ ...state, [e.target.name]: e.target.value });
+    if(e.target.name==="mode"){
+    setState({...state,education:"",[e.target.name]: e.target.value })
+    }
   };
 
   const onSubmit = (e) => {
@@ -61,6 +67,25 @@ export default function Education() {
         </h1>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
           <label htmlFor="education" className="text-sm mb-1">
+            Mode <span className="text-red-500">*</span>
+            </label>
+            <select
+            onChange={onChangeHandler}
+            className="title bg-gray-100 border border-gray-300 p-2  outline-none"
+            value={state.mode}
+            id={"mode"}
+            name={"mode"}
+            required={true}
+            placeholder="Mode"
+          >
+            <option value="NormalMode">Normal Mode</option>
+            <option value="DualMode">Dual Degree</option>
+            <option value="DirectPhd">Direct Phd</option>
+          </select>
+        
+        </div>
+        <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+          <label htmlFor="education" className="text-sm mb-1">
             School/College Education <span className="text-red-500">*</span>
           </label>
           <select
@@ -73,12 +98,12 @@ export default function Education() {
             placeholder="School/College Education"
           >
             <option value="">Select Education</option>
-            <option value="10th">10th / Matriculation</option>
-            <option value="10+2">10+2 / Higher Secondary</option>
-            <option value="UG">Under Graduate (U.G.)</option>
-            <option value="PG">Post Graduate (P.G.)</option>
+            {/* <option value="10th">10th / Matriculation</option>
+            <option value="10+2">10+2 / Higher Secondary</option> */}
+            {state.mode!=="DualMode"?<option value="UG">Under Graduate (U.G.)</option>:null}
+            {state.mode!=="DirectPhd"?<option value="PG">Post Graduate (P.G.)</option>:null}
             <option value="PHD">Doctor of Philosophy (PhD)</option>
-            <option value="OTHER">Other</option>
+            {/* <option value="OTHER">Other</option> */}
           </select>
 
           <label htmlFor="subject" className="text-sm mb-1">
