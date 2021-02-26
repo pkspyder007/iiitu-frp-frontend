@@ -110,18 +110,6 @@ export default function PersonalInfo() {
             required={true}
           />
 
-          <label htmlFor="fax" className="text-sm mb-1">
-            Fax
-          </label>
-          <SecondaryInput
-            id="fax"
-            name="fax"
-            value={state.fax}
-            onChange={onChangeHandler}
-            type="text"
-            placeholder="Fax No."
-          />
-
           <label htmlFor="email" className="text-sm mb-1">
             Email <span className="text-red-500">*</span>
           </label>
@@ -159,19 +147,6 @@ export default function PersonalInfo() {
             onChange={onChangeHandler}
             type="text"
             placeholder="Alternate Phone *"
-          />
-
-          <label htmlFor="secFax" className="text-sm mb-1">
-          Alternate Fax
-          </label>
-
-          <SecondaryInput
-            id="secFax"
-            name="secFax"
-            value={state.sexFax}
-            onChange={onChangeHandler}
-            type="text"
-            placeholder="Secondary Fax No."
           />
 
           <label htmlFor="secEmail" className="text-sm mb-1">
@@ -269,6 +244,21 @@ export default function PersonalInfo() {
             <option value="ST">ST</option>
             <option value="EWS">EWS</option>
           </select>
+
+          {state.category !== "UR" ? (
+            <>
+              <label htmlFor="catDoc" className="text-sm mb-1">
+                Upload category certificate document.
+              </label>
+              <SecondaryInput
+                type="file"
+                id="catDoc"
+                name="catDoc"
+                onChange={onFileChangeHandler}
+                required={state.category !== "UR"}
+              />
+            </>
+          ) : null}
 
           <label htmlFor="pwd" className="text-sm mb-1">
             Persone with Disability <span className="text-red-500">*</span>

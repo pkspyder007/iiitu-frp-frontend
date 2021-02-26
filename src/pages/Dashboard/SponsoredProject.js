@@ -6,14 +6,13 @@ import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
 const initState = {
-  projectAsPI: "",
-  grantPI: "",
-  projectAsCOPI: "",
-  grantCOPI: "",
-  inProgressAsPI: "",
-  grantInProgressAsPI: "",
-  inProgressAsCOPI: "",
-  grantInProgressAsCOPI: "",
+  title: "",
+  sponsor: "",
+  amount: "",
+  duration: "",
+  start: "",
+  end: "",
+  outcome: "",
   doc: "",
 };
 
@@ -89,123 +88,106 @@ export default function SponsoredProject() {
       <form id="resformii" onSubmit={onSubmit}>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
           <h1 className="text-2xl text-indigo-600 mb-4">Sponsered Projects</h1>
-          <label htmlFor="salary" className="text-sm mb-1">
-            No of Sponsored Projects completed as PI{" "}
+          <label htmlFor="title" className="text-sm mb-1">
+            Title
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
-            id="projectAsPI"
-            name="projectAsPI"
-            type="number"
-            min="0"
-            value={state.projectAsPI}
+            id="title"
+            name="title"
+            type="text"
+            value={state.title}
             required={true}
-            placeholder={"Enter Number"}
+            placeholder={"Enter Title"}
           />
 
-          <label htmlFor="grantPI" className="text-sm mb-1">
-            Total Amount of Grant (in INR Lac.){" "}
+          <label htmlFor="sponsor" className="text-sm mb-1">
+            Sponsor
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
-            id="grantPI"
-            name="grantPI"
-            type="number"
-            min="0"
-            value={state.grantPI}
+            id="sponsor"
+            name="sponsor"
+            type="text"
+            value={state.sponsor}
             required={true}
-            placeholder={"Enter Number"}
+            placeholder={"Enter Sponser name"}
           />
 
-          <label htmlFor="projectAsCOPI" className="text-sm mb-1">
-            No of Sponsored Projects completed as CO-PI{" "}
+          <label htmlFor="amount" className="text-sm mb-1">
+            Amount
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
-            id="projectAsCOPI"
-            name="projectAsCOPI"
+            id="amount"
+            name="amount"
             type="number"
             min="0"
-            value={state.projectAsCOPI}
+            value={state.amount}
             required={true}
-            placeholder={"Enter Number"}
+            placeholder={"Enter amount"}
           />
 
-          <label htmlFor="grantCOPI" className="text-sm mb-1">
-            Total Amount of Grant(in INR Lac.){" "}
+          <label htmlFor="duration" className="text-sm mb-1">
+            Duration (Years)
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
-            id="grantCOPI"
-            name="grantCOPI"
+            id="duration"
+            name="duration"
             type="number"
             min="0"
-            value={state.grantCOPI}
+            value={state.duration}
             required={true}
             placeholder={"Enter Number"}
           />
 
-          <label htmlFor="inProgressAsPI" className="text-sm mb-1">
-            No of Sponsored Projects In Progress as CO-PI{" "}
+          <label htmlFor="start" className="text-sm mb-1">
+            Start
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
-            id="inProgressAsPI"
-            name="inProgressAsPI"
+            id="start"
+            name="start"
             type="number"
-            min="0"
-            value={state.inProgressAsPI}
+            min="1960"
+            value={state.start}
             required={true}
             placeholder={"Enter Number"}
           />
 
-          <label htmlFor="grantInProgressAsPI" className="text-sm mb-1">
-            Total Amount of Grant <span className="text-red-500">*</span>
-          </label>
-          <SecondaryInput
-            onChange={onChangeHandler}
-            id="grantInProgressAsPI"
-            name="grantInProgressAsPI"
-            type="number"
-            min="0"
-            value={state.grantInProgressAsPI}
-            required={true}
-            placeholder={"Enter Number"}
-          />
-
-          <label htmlFor="inProgressAsCOPI" className="text-sm mb-1">
-            No of Sponsored Projects In Progress as CO-PI{" "}
+          <label htmlFor="end" className="text-sm mb-1">
+            End
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
-            id="inProgressAsCOPI"
-            name="inProgressAsCOPI"
+            id="end"
+            name="end"
             type="number"
-            min="0"
-            value={state.inProgressAsCOPI}
+            min="1960"
+            value={state.end}
             required={true}
             placeholder={"Enter Number"}
           />
 
-          <label htmlFor="grantInProgressAsCOPI" className="text-sm mb-1">
-            Total Amount of Grant <span className="text-red-500">*</span>
+          <label htmlFor="outcome" className="text-sm mb-1">
+            Outcomes <span className="text-red-500">*</span>
           </label>
-          <SecondaryInput
+          <textarea
+            className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
             onChange={onChangeHandler}
-            id="grantInProgressAsCOPI"
-            name="grantInProgressAsCOPI"
-            type="number"
-            min="0"
-            value={state.grantInProgressAsCOPI}
+            id="outcome"
+            name="outcome"
+            type="text"
+            value={state.outcome}
             required={true}
-            placeholder={"Enter Number"}
-          />
+          ></textarea>
 
           <label htmlFor="doc" className="text-sm mb-1">
             List and description of the projects. (See the help on right side

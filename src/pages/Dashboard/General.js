@@ -19,7 +19,7 @@ export default function General() {
   const alert = useAlert();
 
   const resetForm = () => {
-    let form = document.querySelector("#sopform");
+    let form = document.querySelector("#gqform");
     form.reset();
     setState(initState);
   };
@@ -65,7 +65,7 @@ export default function General() {
             id="one"
             name="one"
             value={state.one}
-            required={true}
+            
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
           ></textarea>
 
@@ -81,7 +81,7 @@ export default function General() {
             id="two"
             name="two"
             value={state.two}
-            required={true}
+            
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
           ></textarea>
 
@@ -97,7 +97,7 @@ export default function General() {
             id="three"
             name="three"
             value={state.three}
-            required={true}
+            
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
           ></textarea>
 
@@ -114,7 +114,7 @@ export default function General() {
             id="four"
             name="four"
             value={state.four}
-            required={true}
+            
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
           ></textarea>
 
@@ -130,7 +130,7 @@ export default function General() {
             id="five"
             name="five"
             value={state.five}
-            required={true}
+            
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
           ></textarea>
 
