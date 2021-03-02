@@ -1,16 +1,14 @@
 import axios from 'axios';
 import React, { createContext, useReducer, useEffect } from 'react';
 
-
 const initialState = {
     loggedIn: false,
-    role: "admin"
+    role: "user"
   };
   const authContext = createContext(initialState);
   const { Provider } = authContext;
   
   const AuthProvider = ({ children }) => {
-
     useEffect(() => {
       axios.get("/users/autoLogin")
         .then(res => {

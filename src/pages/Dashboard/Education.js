@@ -31,11 +31,12 @@ export default function Education() {
   };
 
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
   const onEduModeChange = (e) => {
+    console.log(e.target.value);
+    setState({ ...state, [e.target.name]: e.target.value });
     axios
     .post(`/applications/${appId}/setEdumode`, { mode: e.target.value })
     .then(res => {
@@ -92,7 +93,7 @@ export default function Education() {
             <option value="dphd">Direct PhD.</option>
           </select>
         </div>
-        {state.eduMode !== "" && (
+        {state.eduMode && (
           <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
             <label htmlFor="education" className="text-sm mb-1">
               School/College Education <span className="text-red-500">*</span>
