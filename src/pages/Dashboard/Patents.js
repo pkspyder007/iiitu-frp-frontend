@@ -6,8 +6,10 @@ import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
 const initState = {
-    noOfPatents: "0",
-    list: "",
+    name:"",
+    num: "0",
+    year: "",
+    status:"",
   appId: "",
 };
 
@@ -28,13 +30,17 @@ export default function Patents() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let data = new FormData();
-    for (let [key, value] of Object.entries(state)) {
-      data.append(key, value);
-    }
+    let data = state;
+    // for (let [key, value] of Object.entries(state)) {
+    //   data.append(key, value);
+    // }
 
     axios
-      .post(`/applications/${appId}/patents`, data)
+      .post(`/applications/${appId}/patents`, data,{
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
       .then((res) => {
         alert.success(res.data.msg);
         resetForm();
@@ -81,21 +87,57 @@ export default function Patents() {
     <form id="patform" onSubmit={onSubmit}>
       <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
       <h1 className="text-2xl text-indigo-600 mb-4">Patents </h1>
-      <label htmlFor="noOfPatents" className="text-sm mb-1">
-      Number of Patents <span className="text-red-500">*</span>
+      <label htmlFor="name" className="text-sm mb-1">
+      Patient Name <span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onChangeHandler}
-          id="noOfPatents"
-          name="noOfPatents"
-          type="number"
+          id="name"
+          name="name"
+          type="text"
           min="0"
-          value={state.noOfPatents}
+          value={state.name}
+          required={true}
+          />
+          <label htmlFor="year" className="text-sm mb-1">
+      Patient Year <span className="text-red-500">*</span>
+        </label>
+        <SecondaryInput
+          onChange={onChangeHandler}
+          id="year"
+          name="year"
+          type="text"
+          min="0"
+          value={state.year}
+          required={true}
+        />
+      <label htmlFor="num" className="text-sm mb-1">
+      Patient Number <span className="text-red-500">*</span>
+        </label>
+        <SecondaryInput
+          onChange={onChangeHandler}
+          id="num"
+          name="num"
+          type="text"
+          min="0"
+          value={state.num}
+          required={true}
+        />
+        <label htmlFor="status" className="text-sm mb-1">
+      Patient status <span className="text-red-500">*</span>
+        </label>
+        <SecondaryInput
+          onChange={onChangeHandler}
+          id="status"
+          name="status"
+          type="text"
+          min="0"
+          value={state.status}
           required={true}
         />
 
 
-<label htmlFor="list" className="text-sm mb-1">
+{/* <label htmlFor="list" className="text-sm mb-1">
          List Of Patents<span className="text-red-500">*</span>
         </label>
         <textarea
@@ -106,7 +148,7 @@ export default function Patents() {
           value={state.list}
           required={true}
           className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-        ></textarea>
+        ></textarea> */}
         
         <div className="buttons flex mt-8">
           <div

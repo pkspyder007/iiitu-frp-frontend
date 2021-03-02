@@ -13,6 +13,7 @@ const initState = {
   institution: "",
   percentage: "",
   doc: "",
+  mode:""
 };
 
 export default function Education() {
@@ -27,12 +28,16 @@ export default function Education() {
   };
 
   const onFileChangeHandler = (e) => {
+    
     setState({ ...state, [e.target.name]: e.target.files[0] });
   };
 
   const onChangeHandler = (e) => {
     console.log(e.target.value);
     setState({ ...state, [e.target.name]: e.target.value });
+    if(e.target.name==="mode"){
+    setState({...state,education:"",[e.target.name]: e.target.value })
+    }
   };
 
   const onEduModeChange = (e) => {

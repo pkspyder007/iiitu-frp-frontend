@@ -6,9 +6,10 @@ import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
 const initState = {
-  first: "",
-  second: "",
-  third: "",
+  title:"",
+  yearOfPub:"",
+  publisher:"",
+  doc:"",
   appId: "",
 };
 
@@ -26,7 +27,9 @@ export default function BestPapers() {
   const onFileChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.files[0] });
   };
-
+  const onChangeHandler = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +37,6 @@ export default function BestPapers() {
     for (let [key, value] of Object.entries(state)) {
       data.append(key, value);
     }
-
     axios
       .post(`/applications/${appId}/bestpapers`, data)
       .then((res) => {
@@ -80,7 +82,7 @@ export default function BestPapers() {
       </div>
       <form id="bpform" onSubmit={onSubmit}>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-          <h1 className="text-2xl text-indigo-600 mb-4">Three Best Papers</h1>
+          {/* <h1 className="text-2xl text-indigo-600 mb-4">Three Best Papers</h1>
           <label htmlFor="first" className="text-sm mb-1">
             <strong>Best Paper 1</strong> Published
             <span className="text-red-500">*</span>
@@ -130,9 +132,62 @@ export default function BestPapers() {
                 type={"submit"}
               >
                 Add
-              </button>
+              </button> 
             </div>
-          </div>
+          </div>*/}
+           <label htmlFor="name" className="text-sm mb-1">
+            Title of Paper <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="title"
+            id="title"
+            value={state.title}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="Title *"
+            required={true}
+          />
+          <label htmlFor="name" className="text-sm mb-1">
+            Year of Publication <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="yearOfPub"
+            id="yearOfPub"
+            value={state.yearOfPub}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="Year *"
+            required={true}
+          />
+          <label htmlFor="publisher" className="text-sm mb-1">
+            publisher <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="publisher"
+            id="publisher"
+            value={state.publisher}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="publisher *"
+            required={true}
+          />
+          <label htmlFor="first" className="text-sm mb-1">
+            <strong>Paper</strong> Published
+            <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            onChange={onFileChangeHandler}
+            id="doc"
+            name="doc"
+            type="file"
+            required={true}
+          />
+          <button
+                className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
+                type={"submit"}
+              >
+                Add
+              </button> 
         </div>
       </form>
     </AppLayout>

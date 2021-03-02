@@ -6,14 +6,14 @@ import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
 const initState = {
-  phdCompleted: "",
-  phdProgress: "",
-  pgCompleted: "",
-  pgProgress: "",
-  ugCompleted: "",
-  ugProgress: "",
-  doc: "",
-  appId: "",
+  type:"",
+  status:"",
+  nameOfCandidate:"",
+  insitute:"",
+  regYear:"",
+  finalViva:"",
+  doc:"",
+  appId:""
 };
 
 export default function ThesisSupervised() {
@@ -89,7 +89,7 @@ export default function ThesisSupervised() {
     <form id="thesisform" onSubmit={onSubmit}>
       <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
       <h1 className="text-2xl text-indigo-600 mb-4">Thesis Supervised</h1>
-        <h1 className="text-indigo-600 text-xl">Doctoral(PhD)</h1>
+        {/* <h1 className="text-indigo-600 text-xl">Doctoral(PhD)</h1>
         <hr />
         <label htmlFor="phdCompleted" className="text-sm mb-1 mt-4">
           No. of supervisions completed<span className="text-red-500">*</span>
@@ -189,7 +189,90 @@ export default function ThesisSupervised() {
           name="doc"
           type="file"
           required={true}
-        />
+        /> */}
+        <label htmlFor="type" className="text-sm mb-1">
+            Type <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="type"
+            id="type"
+            value={state.type}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="type *"
+            required={true}
+          />
+          <label htmlFor="status" className="text-sm mb-1">
+            Status <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="status"
+            id="status"
+            value={state.status}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="status *"
+            required={true}
+          />
+          <label htmlFor="nameOfCandidate" className="text-sm mb-1">
+            Name of Candidate <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="nameOfCandidate"
+            id="nameOfCandidate"
+            value={state.nameOfCandidate}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="nameOfCandidate *"
+            required={true}
+          />
+          <label htmlFor="insitute" className="text-sm mb-1">
+            Insitute <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="insitute"
+            id="insitute"
+            value={state.insitute}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="insitute *"
+            required={true}
+          />
+          <label htmlFor="regYear" className="text-sm mb-1">
+            Registration Year <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="regYear"
+            id="regYear"
+            value={state.regYear}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="regYear *"
+            required={true}
+          />
+          <label htmlFor="finalViva" className="text-sm mb-1">
+            Name of Candidate <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            name="finalViva"
+            id="finalViva"
+            value={state.finalViva}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="finalViva *"
+            required={true}
+          />
+           <label htmlFor="first" className="text-sm mb-1">
+            <strong>Doc</strong> 
+            <span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            onChange={onFileChangeHandler}
+            id="doc"
+            name="doc"
+            type="file"
+            required={true}
+          />
 
         <div className="buttons flex mt-8">
           <div
