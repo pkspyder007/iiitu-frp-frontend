@@ -12,6 +12,7 @@ export default function AppLayout(props) {
     axios
       .get(`/applications/${appId}/`)
       .then(({ data }) => {
+        console.log(data)
         setState(data.app);
       })
       .catch((err) => {
