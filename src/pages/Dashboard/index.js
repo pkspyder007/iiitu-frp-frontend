@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import { useAlert } from "react-alert";
 
 export default function Dashboard() {
-  const [state, setState] = useState([]); 
+  const [state, setState] = useState([]);
 
   useEffect(() => {
     axios
@@ -50,9 +50,7 @@ export default function Dashboard() {
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      
-                    </th>
+                    ></th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -77,32 +75,44 @@ export default function Dashboard() {
                             {completed ? "Complete" : "Incomplete"}
                           </span>
                         </td>
-                        {!completed && (<><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <Link to={`/dashboard/application/overview/${id}`} >
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            View
-                          </span></Link>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <Link to={`/dashboard/application/personal/${id}`} >
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            Edit
-                          </span></Link>
-                        </td></>)}
-                        {completed && (<>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
-                            Application Locked
-                          </span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <Link to={`/dashboard/application/fees/${id}`} >
-                          <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-500 text-white">
-                            Fee Details
-                          </span>
-                          </Link>
-                        </td>
-                        </>)}
+                        {!completed && (
+                          <>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <Link
+                                to={`/dashboard/application/overview/${id}`}
+                              >
+                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                  View
+                                </span>
+                              </Link>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <Link
+                                to={`/dashboard/application/personal/${id}`}
+                              >
+                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                  Edit
+                                </span>
+                              </Link>
+                            </td>
+                          </>
+                        )}
+                        {completed && (
+                          <>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
+                                Application Locked
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <Link to={`/dashboard/application/fees/${id}`}>
+                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-500 text-white">
+                                  Enter Fee Details
+                                </span>
+                              </Link>
+                            </td>
+                          </>
+                        )}
                       </tr>
                     );
                   })}
