@@ -32,7 +32,7 @@ export default function FeeDetails() {
         })
       }
       else{
-        alert.error("Plz Lock your application!")
+        alert.error("Plz Lock your application before proceeding!")
       }
     })
     .catch((err) => {
@@ -67,6 +67,13 @@ export default function FeeDetails() {
         }
       });
   };
+  const Gen=()=>{
+    window.open(`http://localhost:4000/applications/${appId}/gpdf`).then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      alert.error(err.response.data.msg);
+    })
+  }
   return (
     <div>
       <AppLayout>
@@ -132,12 +139,13 @@ Type of Corporate / Institution : Educational Institutions
                 required={true}
               />
               <button
-                      className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
-                      type={"submit"}
-                    >
+                className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
+                type={"submit"}
+              >
                       Add
-                    </button>
+              </button>
           </form>
+          <button  className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600" onClick={Gen}>Generate Pdf</button>
            </> :<></>
           }
           

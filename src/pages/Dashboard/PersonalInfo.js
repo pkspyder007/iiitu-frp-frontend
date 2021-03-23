@@ -291,7 +291,7 @@ export default function PersonalInfo() {
             </>
           ) : null}
 
-          {state.category!=="UR"?<><label htmlFor="pwdDoc" className="text-sm mb-1">
+          <label htmlFor="pwdDoc" className="text-sm mb-1">
             Govt. issued ID-Card (PDF) <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -300,7 +300,7 @@ export default function PersonalInfo() {
             id="govtIdCard"
             name="govtIdCard"
             required={true}
-          /></>:null}
+          />
 
           <label htmlFor="pwdDoc" className="text-sm mb-1">
             Recent Photograph <span className="text-red-500">*</span>

@@ -61,7 +61,7 @@ export default function OtherInfo() {
           <h1 className="text-2xl text-indigo-600 mb-4">Other Information </h1>
 
           <label htmlFor="eduMode" className="text-sm mb-1">
-            Select Entity Type Mode <span className="text-red-500">*</span>
+            Type <span className="text-red-500">*</span>
           </label>
           <select
             onChange={onChangeHandler}
@@ -75,13 +75,13 @@ export default function OtherInfo() {
             <option value="">Select Type</option>
             <option value="normal">Award</option>
             <option value="dual">Honor</option>
-            <option value="dphd">Academic Credentials/Recognization</option>
-            <option value="dphd">
+            <option value="AcadmicRecognization">Academic Credentials/Recognization</option>
+            <option value="Membership">
               Membership/ Fellowship of an Professional society
             </option>
-            <option value="dphd">Special Training</option>
-            <option value="dphd">Proficiency / Revent Information</option>
-            <option value="dphd">Others</option>
+            <option value="specialTraning">Special Training</option>
+            <option value="Proficiency">Proficiency / Revent Information</option>
+            <option value="Others">Others</option>
           </select>
 
           <label htmlFor="subject" className="text-sm mb-1">
