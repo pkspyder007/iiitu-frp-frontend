@@ -7,22 +7,23 @@ import axios from "axios";
 export default function LockApp() {
   const { appId } = useParams();
   const [isChecked, seIsChecked] = useState(false);
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
-    const alert = useAlert();
+  const alert = useAlert();
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    axios.post(`/applications/${appId}/lock`)
-    .then(res => {
+    axios
+      .post(`/applications/${appId}/lock`)
+      .then((res) => {
         alert.success(res.data.msg);
-        history.push(`/dasboard/application/fees/${appId}`);
-    })
-    .catch(err => {
-        alert.error("Please complete the mandatory steps")
+        history.push(`/dashboard/application/fees/${appId}`);
+      })
+      .catch((err) => {
+        alert.error("Please complete the mandatory steps");
         setErrors(err.response?.data?.errors);
-    });
-  }
+      });
+  };
 
   return (
     <div>
@@ -42,13 +43,15 @@ export default function LockApp() {
           </p>
           <hr className="my-4" />
 
-          {
-              errors.length !== 0 && (
-                  <>
-                    {errors.map((e,i) => (<div key={i} className="border border-red p-2 text-red-500">{e}</div>) )}
-                  </>
-              )
-          }
+          {errors.length !== 0 && (
+            <>
+              {errors.map((e, i) => (
+                <div key={i} className="border border-red p-2 text-red-500">
+                  {e}
+                </div>
+              ))}
+            </>
+          )}
 
           <form className="mt-4 ml-3" id="lockform" onSubmit={handleSubmit}>
             <label class="inline-flex items-center mb-3 mr-3">
