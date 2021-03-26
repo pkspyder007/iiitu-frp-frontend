@@ -73,14 +73,18 @@ export default function OtherInfo() {
             placeholder=" Select Entity type "
           >
             <option value="">Select Type</option>
-            <option value="normal">Award</option>
-            <option value="dual">Honor</option>
-            <option value="AcadmicRecognization">Academic Credentials/Recognization</option>
+            <option value="Award">Award</option>
+            <option value="Honour">Honour</option>
+            <option value="AcadmicRecognization">
+              Academic Credentials/Recognization
+            </option>
             <option value="Membership">
               Membership/ Fellowship of an Professional society
             </option>
             <option value="specialTraning">Special Training</option>
-            <option value="Proficiency">Proficiency / Revent Information</option>
+            <option value="Proficiency">
+              Proficiency / Revent Information
+            </option>
             <option value="Others">Others</option>
           </select>
 
