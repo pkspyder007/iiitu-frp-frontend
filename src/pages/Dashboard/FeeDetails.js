@@ -44,6 +44,7 @@ export default function FeeDetails() {
         alert.error(err?.response?.data?.msg);
       });
   }, []);
+
   const onChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
     console.log(state);
@@ -71,6 +72,13 @@ export default function FeeDetails() {
         }
       });
   };
+  const Gen=()=>{
+    window.open(`http://localhost:4000/applications/${appId}/gpdf`).then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      alert.error(err.response.data.msg);
+    })
+  }
   return (
     <div>
       <AppLayout>
@@ -132,51 +140,51 @@ export default function FeeDetails() {
                 </h1>
                 <form onSubmit={onSubmit}>
                   <label htmlFor="feeTid" className="text-sm mb-1">
-                    Tansition Id <span className="text-red-500">*</span>
-                  </label>
-                  <SecondaryInput
-                    name="feeTid"
-                    id="feeTid"
-                    value={state.feeTid}
-                    onChange={onChangeHandler}
-                    type="text"
-                    placeholder="Tansition Id *"
-                    required={true}
-                  />
-                  <label htmlFor="feeDate" className="text-sm mb-1">
-                    Payment Date <span className="text-red-500">*</span>
-                  </label>
-                  <SecondaryInput
-                    name="feeDate"
-                    id="feeDate"
-                    value={state.feeDate}
-                    onChange={onChangeHandler}
-                    type="date"
-                    placeholder="PaymentDate *"
-                    required={true}
-                  />
-                  <label htmlFor="feeReciept" className="text-sm mb-1">
-                    Payment Proof
-                    <span className="text-red-500"> *</span>
-                  </label>
-                  <SecondaryInput
-                    onChange={onFileChangeHandler}
-                    id="feeReciept"
-                    name="feeReciept"
-                    type="file"
-                    required={true}
-                  />
-                  <button
-                    className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
-                    type={"submit"}
-                  >
-                    Add
-                  </button>
-                </form>
-              </>
-            ) : (
-              <></>
-            )}
+
+                  Tansition Id <span className="text-red-500">*</span>
+                </label>
+                <SecondaryInput
+                  name="feeTid"
+                  id="feeTid"
+                  value={state.feeTid}
+                  onChange={onChangeHandler}
+                  type="text"
+                  placeholder="Tansition Id *"
+                  required={true}
+                />
+                <label htmlFor="feeDate" className="text-sm mb-1">
+                  Payment Date <span className="text-red-500">*</span>
+                </label>
+                <SecondaryInput
+                  name="feeDate"
+                  id="feeDate"
+                  value={state.feeDate}
+                  onChange={onChangeHandler}
+                  type="date"
+                  placeholder="PaymentDate *"
+                  required={true}
+                />
+                <label htmlFor="feeReciept" className="text-sm mb-1">
+                  Payment Proof
+                <span className="text-red-500"> *</span>
+              </label>
+              <SecondaryInput
+                onChange={onFileChangeHandler}
+                id="feeReciept"
+                name="feeReciept"
+                type="file"
+                required={true}
+              />
+              <button
+                className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
+                type={"submit"}
+              >
+                      Add
+              </button>
+          </form>
+          <button  className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600" onClick={Gen}>Generate Pdf</button>
+           </> :<></>
+          }
           </div>
         </form>
       </AppLayout>

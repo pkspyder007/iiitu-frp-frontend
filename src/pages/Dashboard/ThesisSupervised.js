@@ -193,7 +193,7 @@ export default function ThesisSupervised() {
         <label htmlFor="type" className="text-sm mb-1">
             Type <span className="text-red-500">*</span>
           </label>
-          <SecondaryInput
+          <select
             name="type"
             id="type"
             value={state.type}
@@ -201,7 +201,13 @@ export default function ThesisSupervised() {
             type="text"
             placeholder="type *"
             required={true}
-          />
+            className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
+          >
+             <option value="UG">U.G.</option>
+              <option value="PG">P.G.</option>
+              <option value="PHD">PhD</option>
+          </select>
+
           <label htmlFor="status" className="text-sm mb-1">
             Status <span className="text-red-500">*</span>
           </label>
@@ -246,7 +252,7 @@ export default function ThesisSupervised() {
             id="regYear"
             value={state.regYear}
             onChange={onChangeHandler}
-            type="text"
+            type="date"
             placeholder="regYear *"
             required={true}
           />
@@ -263,7 +269,7 @@ export default function ThesisSupervised() {
             required={true}
           />
            <label htmlFor="first" className="text-sm mb-1">
-            <strong>Doc</strong> 
+            <strong>Proof</strong> 
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput

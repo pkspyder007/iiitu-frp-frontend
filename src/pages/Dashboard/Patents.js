@@ -88,7 +88,7 @@ export default function Patents() {
       <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
       <h1 className="text-2xl text-indigo-600 mb-4">Patents </h1>
       <label htmlFor="name" className="text-sm mb-1">
-      Patient Name <span className="text-red-500">*</span>
+      Patents Name <span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onChangeHandler}
@@ -100,7 +100,7 @@ export default function Patents() {
           required={true}
           />
           <label htmlFor="year" className="text-sm mb-1">
-      Patient Year <span className="text-red-500">*</span>
+      Patents Year <span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onChangeHandler}
@@ -112,7 +112,7 @@ export default function Patents() {
           required={true}
         />
       <label htmlFor="num" className="text-sm mb-1">
-      Patient Number <span className="text-red-500">*</span>
+      Patents Number <span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onChangeHandler}
@@ -124,7 +124,7 @@ export default function Patents() {
           required={true}
         />
         <label htmlFor="status" className="text-sm mb-1">
-      Patient status <span className="text-red-500">*</span>
+      Patents status <span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onChangeHandler}

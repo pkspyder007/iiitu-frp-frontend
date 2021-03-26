@@ -154,11 +154,10 @@ export default function SponsoredProject() {
             onChange={onChangeHandler}
             id="start"
             name="start"
-            type="number"
-            min="1960"
+            type="date"
             value={state.start}
             required={true}
-            placeholder={"Enter Number"}
+            placeholder={"Select Starting Date"}
           />
 
           <label htmlFor="end" className="text-sm mb-1">
@@ -169,11 +168,10 @@ export default function SponsoredProject() {
             onChange={onChangeHandler}
             id="end"
             name="end"
-            type="number"
-            min="1960"
+            type="date"
             value={state.end}
             required={true}
-            placeholder={"Enter Number"}
+            placeholder={"Select Ending Date"}
           />
 
           <label htmlFor="outcome" className="text-sm mb-1">
