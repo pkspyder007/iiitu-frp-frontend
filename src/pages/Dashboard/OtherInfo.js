@@ -73,19 +73,15 @@ export default function OtherInfo() {
             placeholder=" Select Entity type "
           >
             <option value="">Select Type</option>
-            <option value="Award">Award</option>
-            <option value="Honour">Honour</option>
-            <option value="AcadmicRecognization">
-              Academic Credentials/Recognization
-            </option>
+            <option value="normal">Award/Honor</option>
+          {/* <option value="dual">Honor</option> */}
+            <option value="AcadmicRecognization">Academic Credentials/Recognization</option>
             <option value="Membership">
-              Membership/ Fellowship of an Professional society
+              Membership/ Fellowship of a Professional society
             </option>
-            <option value="specialTraning">Special Training</option>
-            <option value="Proficiency">
-              Proficiency / Revent Information
-            </option>
-            <option value="Others">Others</option>
+            <option value="specialTraning">Special training/proficiency</option>
+            <option value="Proficiency">Proficiency / Revent Information</option>
+            <option value="Others">Others(Relevent to Application)</option>
           </select>
 
           <label htmlFor="subject" className="text-sm mb-1">
@@ -116,7 +112,7 @@ export default function OtherInfo() {
           />
 
           <label htmlFor="subject" className="text-sm mb-1">
-            Amount <span className="text-red-500">( If Any )</span>
+            Remarks <span className="text-red-500">( If Any )</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
