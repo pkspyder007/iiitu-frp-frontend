@@ -70,7 +70,7 @@ export default function Education() {
           err.response.data.errors.map((e) => alert.error(e.message));
         }
       });
-      setState(initState)
+      setState({...initState,eduMode:this.state.eduMode})
   };
 
   return (

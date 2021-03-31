@@ -162,7 +162,7 @@ export default function General() {
                 className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
                 type={"submit"}
               >
-                Add
+                Save
               </button>
             </div>
           </div>

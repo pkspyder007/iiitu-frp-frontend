@@ -211,15 +211,19 @@ export default function ThesisSupervised() {
           <label htmlFor="status" className="text-sm mb-1">
             Status <span className="text-red-500">*</span>
           </label>
-          <SecondaryInput
-            name="status"
-            id="status"
-            value={state.status}
-            onChange={onChangeHandler}
-            type="text"
-            placeholder="status *"
-            required={true}
-          />
+          <select 
+             name="status"
+             id="status"
+             value={state.status}
+             onChange={onChangeHandler}
+             type="text"
+             placeholder="status *"
+             required={true}
+             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
+          >
+            <option value="completed">Completed</option>
+            <option value="ongoing">Ongoing</option>
+          </select>
           <label htmlFor="nameOfCandidate" className="text-sm mb-1">
             Name of Candidate <span className="text-red-500">*</span>
           </label>

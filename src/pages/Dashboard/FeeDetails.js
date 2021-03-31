@@ -67,13 +67,13 @@ export default function FeeDetails() {
         }
       });
   };
-  const Gen=()=>{
-    window.open(`http://localhost:4000/applications/${appId}/gpdf`).then((res)=>{
-      console.log(res)
-    }).catch((err)=>{
-      alert.error(err.response.data.msg);
-    })
-  }
+  // const Gen=()=>{
+  //   window.open(`http://localhost:4000/applications/${appId}/gpdf`).then((res)=>{
+  //     console.log(res)
+  //   }).catch((err)=>{
+  //     alert.error(err.response.data.msg);
+  //   })
+  // }
   return (
     <div>
       <AppLayout>
@@ -145,7 +145,7 @@ Type of Corporate / Institution : Educational Institutions
                       Add
               </button>
           </form>
-          <button  className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600" onClick={Gen}>Generate Pdf</button>
+          {/* <button  className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600" onClick={Gen}>Generate Pdf</button> */}
            </> :<></>
           }
           

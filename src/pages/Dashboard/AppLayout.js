@@ -19,6 +19,14 @@ export default function AppLayout(props) {
         alert.error(err?.response?.data?.msg);
       });
   }, []);
+  const GeneratePdf=()=>{
+    if(state.app?.refNum==="NIL"){
+      alert.error("Plz Lock your application before Generating pdf!")
+      return;
+    }
+    
+    window.open(`http://localhost:4000/applications/${appId}/gpdf`)
+  }
   return (
     <div className="flex">
       <div className="flex flex-col w-1/6 h-screen bg-indigo-700">
@@ -118,6 +126,12 @@ export default function AppLayout(props) {
           to={`/dashboard/application/fees/${appId}`}
         >
           Fee Details
+        </NavLink>
+        <NavLink
+          className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
+          onClick={()=>window.open(`http://localhost:4000/applications/${appId}/gpdf`)}
+        >
+          Generate Pdf
         </NavLink>
       </div>
       <div className="px-12"> {props.children}</div>
