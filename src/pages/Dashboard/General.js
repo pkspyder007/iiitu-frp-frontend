@@ -12,22 +12,35 @@ const initState = {
   five: "NA",
   appId: "",
 };
-const YesOrNo=({set,state,name})=>{
-  return(
-    <div style={{width:"100px",margin:"10px",display:"flex",justifyContent:"space-around"}}>
-  <div><label className="mr-1">
-    Yes
-  </label>
-  <input type="radio" onClick={()=>set({...state,[name]:""})} checked={state[name]==="NA"?false:true}>
-  </input></div>
-  <div><label className="mr-1">
-    No
-  </label>
-  <input type="radio" onClick={()=>set({...state,[name]:"NA"})} checked={state[name]!=="NA"?false:true}>
-  </input></div>
-  </div>)
-  
-}
+const YesOrNo = ({ set, state, name }) => {
+  return (
+    <div
+      style={{
+        width: "100px",
+        margin: "10px",
+        display: "flex",
+        justifyContent: "space-around",
+      }}
+    >
+      <div>
+        <label className="mr-1">Yes</label>
+        <input
+          type="radio"
+          onClick={() => set({ ...state, [name]: "" })}
+          checked={state[name] === "NA" ? false : true}
+        ></input>
+      </div>
+      <div>
+        <label className="mr-1">No</label>
+        <input
+          type="radio"
+          onClick={() => set({ ...state, [name]: "NA" })}
+          checked={state[name] !== "NA" ? false : true}
+        ></input>
+      </div>
+    </div>
+  );
+};
 export default function General() {
   const [state, setState] = useState(initState);
   const { appId } = useParams();
@@ -53,7 +66,6 @@ export default function General() {
         resetForm();
       })
       .catch((err) => {
-        alert.error(err.response?.data.msg);
         if (err.response?.data.errors) {
           err.response?.data.errors.map((e) => alert.error(e.message));
         }
@@ -75,15 +87,18 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-        {state.one!="NA"?<textarea
-          onChange={onChangeHandler}
-          id="one"
-          name="one"
-          value={state.one}
-          
-          className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-        ></textarea>:<></>}
-        <YesOrNo state={state} set={setState} name="one"/>
+          {state.one != "NA" ? (
+            <textarea
+              onChange={onChangeHandler}
+              id="one"
+              name="one"
+              value={state.one}
+              className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
+            ></textarea>
+          ) : (
+            <></>
+          )}
+          <YesOrNo state={state} set={setState} name="one" />
           <label htmlFor="two" className="text-sm mb-1">
             <strong>
               2. Have you been punished during your studies at
@@ -91,15 +106,18 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.two!="NA"?<textarea
-            onChange={onChangeHandler}
-            id="two"
-            name="two"
-            value={state.two}
-            
-            className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-          ></textarea>:<></>}
-            <YesOrNo state={state} set={setState} name="two"/>
+          {state.two != "NA" ? (
+            <textarea
+              onChange={onChangeHandler}
+              id="two"
+              name="two"
+              value={state.two}
+              className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
+            ></textarea>
+          ) : (
+            <></>
+          )}
+          <YesOrNo state={state} set={setState} name="two" />
           <label htmlFor="three" className="text-sm mb-1">
             <strong>
               3. Have you been punished during your services or convicted by
@@ -107,15 +125,18 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.three!="NA"?<textarea
-            onChange={onChangeHandler}
-            id="three"
-            name="three"
-            value={state.three}
-            
-            className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-          ></textarea>:<></>}
-            <YesOrNo state={state} set={setState} name="three"/>
+          {state.three != "NA" ? (
+            <textarea
+              onChange={onChangeHandler}
+              id="three"
+              name="three"
+              value={state.three}
+              className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
+            ></textarea>
+          ) : (
+            <></>
+          )}
+          <YesOrNo state={state} set={setState} name="three" />
           <label htmlFor="four" className="text-sm mb-1">
             <strong>
               4. Were you at any time declared medically unfit or asked to
@@ -124,15 +145,18 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.four!="NA"?<textarea
-            onChange={onChangeHandler}
-            id="four"
-            name="four"
-            value={state.four}
-            
-            className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-          ></textarea>:<></>}
-          <YesOrNo state={state} set={setState} name="four"/>
+          {state.four != "NA" ? (
+            <textarea
+              onChange={onChangeHandler}
+              id="four"
+              name="four"
+              value={state.four}
+              className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
+            ></textarea>
+          ) : (
+            <></>
+          )}
+          <YesOrNo state={state} set={setState} name="four" />
           <label htmlFor="five" className="text-sm mb-1">
             <strong>
               5. Do you have any court cases pending as one of the parties? If
@@ -140,15 +164,18 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.five!="NA"?<textarea
-            onChange={onChangeHandler}
-            id="five"
-            name="five"
-            value={state.five}
-            
-            className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
-          ></textarea>:<></>}
-          <YesOrNo state={state} set={setState} name="five"/>
+          {state.five != "NA" ? (
+            <textarea
+              onChange={onChangeHandler}
+              id="five"
+              name="five"
+              value={state.five}
+              className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
+            ></textarea>
+          ) : (
+            <></>
+          )}
+          <YesOrNo state={state} set={setState} name="five" />
 
           <div className="buttons flex mt-8">
             <div

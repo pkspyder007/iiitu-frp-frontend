@@ -13,7 +13,7 @@ const initState = {
   institution: "",
   percentage: "",
   doc: "",
-  mode:""
+  mode: "",
 };
 
 export default function Education() {
@@ -28,14 +28,13 @@ export default function Education() {
   };
 
   const onFileChangeHandler = (e) => {
-    
     setState({ ...state, [e.target.name]: e.target.files[0] });
   };
 
   const onChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
-    if(e.target.name==="mode"){
-    setState({...state,education:"",[e.target.name]: e.target.value })
+    if (e.target.name === "mode") {
+      setState({ ...state, education: "", [e.target.name]: e.target.value });
     }
   };
 
@@ -43,14 +42,10 @@ export default function Education() {
     console.log(e.target.value);
     setState({ ...state, [e.target.name]: e.target.value });
     axios
-    .post(`/applications/${appId}/setEdumode`, { mode: e.target.value })
-    .then(res => {
-
-    })
-    .catch(err => {
-
-    })
-  }
+      .post(`/applications/${appId}/setEdumode`, { mode: e.target.value })
+      .then((res) => {})
+      .catch((err) => {});
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +58,8 @@ export default function Education() {
       .post(`/applications/${appId}/education`, data, {})
       .then((res) => {
         alert.success(res.data.msg);
+        resetForm();
+        setState({ ...initState, eduMode: state.eduMode });
       })
       .catch((err) => {
         alert.error(err.response.data.msg);
@@ -70,7 +67,6 @@ export default function Education() {
           err.response.data.errors.map((e) => alert.error(e.message));
         }
       });
-      setState({...initState,eduMode:this.state.eduMode})
   };
 
   return (

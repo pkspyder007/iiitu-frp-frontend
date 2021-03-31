@@ -6,14 +6,14 @@ import SecondaryInput from "../../components/SecondaryInput";
 import AppLayout from "./AppLayout";
 
 const initState = {
-  type:"",
-  status:"",
-  nameOfCandidate:"",
-  insitute:"",
-  regYear:"",
-  finalViva:"",
-  doc:"",
-  appId:""
+  type: "",
+  status: "",
+  nameOfCandidate: "",
+  insitute: "",
+  regYear: "",
+  finalViva: "",
+  doc: "",
+  appId: "",
 };
 
 export default function ThesisSupervised() {
@@ -56,7 +56,6 @@ export default function ThesisSupervised() {
       });
   };
 
-
   return (
     <AppLayout>
       <div className="flex justify-around mb-2 p-3 border">
@@ -86,10 +85,10 @@ export default function ThesisSupervised() {
           </button>
         </Link>
       </div>
-    <form id="thesisform" onSubmit={onSubmit}>
-      <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-      <h1 className="text-2xl text-indigo-600 mb-4">Thesis Supervised</h1>
-        {/* <h1 className="text-indigo-600 text-xl">Doctoral(PhD)</h1>
+      <form id="thesisform" onSubmit={onSubmit}>
+        <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+          <h1 className="text-2xl text-indigo-600 mb-4">Thesis Supervised</h1>
+          {/* <h1 className="text-indigo-600 text-xl">Doctoral(PhD)</h1>
         <hr />
         <label htmlFor="phdCompleted" className="text-sm mb-1 mt-4">
           No. of supervisions completed<span className="text-red-500">*</span>
@@ -190,7 +189,7 @@ export default function ThesisSupervised() {
           type="file"
           required={true}
         /> */}
-        <label htmlFor="type" className="text-sm mb-1">
+          <label htmlFor="type" className="text-sm mb-1">
             Type <span className="text-red-500">*</span>
           </label>
           <select
@@ -203,23 +202,23 @@ export default function ThesisSupervised() {
             required={true}
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
-             <option value="UG">U.G.</option>
-              <option value="PG">P.G.</option>
-              <option value="PHD">PhD</option>
+            <option value="UG">U.G.</option>
+            <option value="PG">P.G.</option>
+            <option value="PHD">PhD</option>
           </select>
 
           <label htmlFor="status" className="text-sm mb-1">
             Status <span className="text-red-500">*</span>
           </label>
-          <select 
-             name="status"
-             id="status"
-             value={state.status}
-             onChange={onChangeHandler}
-             type="text"
-             placeholder="status *"
-             required={true}
-             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
+          <select
+            name="status"
+            id="status"
+            value={state.status}
+            onChange={onChangeHandler}
+            type="text"
+            placeholder="status *"
+            required={true}
+            className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
             <option value="completed">Completed</option>
             <option value="ongoing">Ongoing</option>
@@ -261,7 +260,7 @@ export default function ThesisSupervised() {
             required={true}
           />
           <label htmlFor="finalViva" className="text-sm mb-1">
-            Name of Candidate <span className="text-red-500">*</span>
+            Title Of Thesis <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             name="finalViva"
@@ -272,8 +271,8 @@ export default function ThesisSupervised() {
             placeholder="finalViva *"
             required={true}
           />
-           <label htmlFor="first" className="text-sm mb-1">
-            <strong>Proof</strong> 
+          <label htmlFor="first" className="text-sm mb-1">
+            <strong>Proof</strong>
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -284,24 +283,24 @@ export default function ThesisSupervised() {
             required={true}
           />
 
-        <div className="buttons flex mt-8">
-          <div
-            onClick={resetForm}
-            className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
-          >
-            Reset
-          </div>
-          <div className="">
-            <button
-              className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
-              type={"submit"}
+          <div className="buttons flex mt-8">
+            <div
+              onClick={resetForm}
+              className="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
             >
-              Add
-            </button>
+              Reset
+            </div>
+            <div className="">
+              <button
+                className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
+                type={"submit"}
+              >
+                Add
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
     </AppLayout>
   );
 }

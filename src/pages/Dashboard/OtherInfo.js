@@ -74,13 +74,17 @@ export default function OtherInfo() {
           >
             <option value="">Select Type</option>
             <option value="normal">Award/Honor</option>
-          {/* <option value="dual">Honor</option> */}
-            <option value="AcadmicRecognization">Academic Credentials/Recognization</option>
+            {/* <option value="dual">Honor</option> */}
+            <option value="AcadmicRecognization">
+              Academic Credentials/Recognization
+            </option>
             <option value="Membership">
               Membership/ Fellowship of a Professional society
             </option>
             <option value="specialTraning">Special training/proficiency</option>
-            <option value="Proficiency">Proficiency / Revent Information</option>
+            <option value="Proficiency">
+              Proficiency / Revent Information
+            </option>
             <option value="Others">Others(Relevent to Application)</option>
           </select>
 
@@ -118,7 +122,7 @@ export default function OtherInfo() {
             onChange={onChangeHandler}
             id="subject"
             name="amount"
-            type="number"
+            type="text"
             value={state.amount}
             required={true}
             placeholder={"Amount if any"}
