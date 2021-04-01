@@ -16,6 +16,7 @@ const initState = {
   sexFax: "",
   secEmail: "",
   DOB: "",
+  dobDoc: "",
   nationality: "",
   sex: "",
   martialStatus: "",
@@ -68,7 +69,7 @@ export default function PersonalInfo() {
   return (
     <AppLayout>
       <form onSubmit={onSubmit} id="persInfoReg">
-      <h1 className="text-2xl text-indigo-600 mb-4">Personal Information</h1>
+        <h1 className="text-2xl text-indigo-600 mb-4">Personal Information</h1>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
           <label htmlFor="name" className="text-sm mb-1">
             Name <span className="text-red-500">*</span>
@@ -150,7 +151,7 @@ export default function PersonalInfo() {
           />
 
           <label htmlFor="secEmail" className="text-sm mb-1">
-          Alternate Email
+            Alternate Email
           </label>
           <SecondaryInput
             id="secEmail"
@@ -172,6 +173,17 @@ export default function PersonalInfo() {
             onChange={onChangeHandler}
             type="date"
             placeholder="D.O.B *"
+            required={true}
+          />
+
+          <label htmlFor="dobDoc" className="text-sm mb-1">
+            Upload DOB certificate/proof.
+          </label>
+          <SecondaryInput
+            type="file"
+            id="dobDoc"
+            name="dobDoc"
+            onChange={onFileChangeHandler}
             required={true}
           />
 
