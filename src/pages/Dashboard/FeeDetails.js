@@ -21,7 +21,7 @@ export default function FeeDetails() {
     axios
       .get(`/applications/${appId}/`)
       .then(({ data }) => {
-        if (data.app.refNum != "NIL") {
+        if (data.app.refNum !== "NIL") {
           setState({
             ...state,
             name: data.app.PersonalDetail.name,
@@ -59,24 +59,18 @@ export default function FeeDetails() {
     }
 
     axios
-      .post(`/applications/${appId}/feeDetails`, data, {})
+      .post(`/applications/${appId}/feeDetails`, data)
       .then((res) => {
-        alert.success(res.data.msg);
+        alert.success("Added Successfully");
+        window.location.replace(`/applications/${appId}/gpdf`);
       })
       .catch((err) => {
-        alert.error(err.response.data.msg);
-        if (err.response.data.errors) {
+        // alert.error(err.response.data.msg);
+        if (err.response?.data?.errors) {
           err.response.data.errors.map((e) => alert.error(e.message));
         }
       });
   };
-  // const Gen=()=>{
-  //   window.open(`http://localhost:4000/applications/${appId}/gpdf`).then((res)=>{
-  //     console.log(res)
-  //   }).catch((err)=>{
-  //     alert.error(err.response.data.msg);
-  //   })
-  // }
   return (
     <div>
       <AppLayout>
@@ -174,7 +168,7 @@ export default function FeeDetails() {
                   />
                   <button
                     className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
-                    type={"submit"}
+                    onClick={onSubmit}
                   >
                     Add
                   </button>

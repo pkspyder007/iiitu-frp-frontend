@@ -62,7 +62,7 @@ export default function Education() {
         setState({ ...initState, eduMode: state.eduMode });
       })
       .catch((err) => {
-        alert.error(err.response.data.msg);
+        alert.error(err.response.data.message);
         if (err.response.data.errors) {
           err.response.data.errors.map((e) => alert.error(e.message));
         }

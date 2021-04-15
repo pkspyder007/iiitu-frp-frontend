@@ -17,6 +17,7 @@ const initState = {
   secEmail: "",
   DOB: "",
   dobDoc: "",
+  catDoc: "",
   nationality: "",
   sex: "",
   martialStatus: "",
