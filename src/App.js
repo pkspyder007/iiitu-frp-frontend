@@ -30,11 +30,20 @@ import AppOverview from "./pages/Dashboard/AppOverview";
 import Apply from "./pages/Apply";
 import LockApp from "./pages/Dashboard/LockApp";
 import FeeDetails from "./pages/Dashboard/FeeDetails";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <>
       <Router>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Recruitement | IIIT Una</title>
+          <meta
+            name="description"
+            content="Online portal for applying for jobs at IIIT Una"
+          />
+        </Helmet>
         <ShowNav />
         <Switch>
           <Route path="/login" exact>
