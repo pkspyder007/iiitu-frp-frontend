@@ -105,7 +105,7 @@ export default function Apply() {
             <option value="">Select School</option>
             <option value="soc">School of Computing</option>
             <option value="soe">School of Electronics</option>
-            <option value="sobs">School of Basic Science</option>
+            <option value="sobs">School of Basic Sciences</option>
           </select>
 
           <select
