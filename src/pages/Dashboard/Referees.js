@@ -56,7 +56,7 @@ export default function Referees() {
     <AppLayout>
     <form id="sopform" onSubmit={onSubmit}>
       <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-      <h1 className="text-2xl text-indigo-600 mb-4">Referees <span className="text-red-500">*(minimum 3)</span></h1>
+      <h1 className="text-2xl text-indigo-600 mb-4">Referees </h1>
         <label htmlFor="name" className="text-sm mb-1">
           Name <span className="text-red-500">*</span>
         </label>
@@ -103,15 +103,7 @@ export default function Referees() {
           required={true}
         />
 
-        <label htmlFor="fax" className="text-sm mb-1">
-          Fax
-        </label>
-        <SecondaryInput
-          onChange={onChangeHandler}
-          id="fax"
-          name="fax"
-          value={state.fax}
-        />
+       
 
         <label htmlFor="email" className="text-sm mb-1">
           Email <span className="text-red-500">*</span>
