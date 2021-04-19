@@ -56,9 +56,9 @@ export default function SOP() {
     <AppLayout>
     <form id="sopform" onSubmit={onSubmit}>
       <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-      <h1 className="text-2xl text-indigo-600 mb-4">STATEMENT OF PURPOSE (SOP) </h1>
+      <h1 className="text-2xl text-indigo-600 mb-4">Statement of Purpose(SOP) </h1>
         <label htmlFor="sop" className="text-sm mb-1">
-          STATEMENT OF PURPOSE(Please see note section)
+          Statement of Purpose
           <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -72,7 +72,7 @@ export default function SOP() {
         ></textarea>
 
         <label htmlFor="doc" className="text-sm mb-1">
-          Please Upload SOP<span className="text-red-500">*</span>
+          Please Upload SoP<span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onFileChangeHandler}
@@ -94,7 +94,7 @@ export default function SOP() {
               className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
               type={"submit"}
             >
-              Add
+              Save
             </button>
           </div>
         </div>
