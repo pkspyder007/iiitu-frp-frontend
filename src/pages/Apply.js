@@ -50,12 +50,12 @@ export default function Apply() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!job.school || !job.dept) {
-      alert.error("Please select both Department and School");
+      alert.error("Please select both School and the corresponding department!");
       return;
     }
 
     if (!job.check) {
-      alert.error("Please check the checkbox to confirm");
+      alert.error("Please check the confirm checkbox to proceed!");
       return;
     }
 
@@ -66,13 +66,13 @@ export default function Apply() {
         jobId: id,
         ...job,
       });
-      alert.success("Job created successfully.");
+      alert.success("Job created successfully!");
       history.push(
         `/dashboard/application/personal/${data.data.application.id}`
       );
     } catch (error) {
       console.log("ee", error);
-      alert.error(`Something went wrong.`);
+      alert.error(`Something went wrong!`);
       if (error.response.data.errors) {
         error.response.data.errors.forEach((e) => alert.info(`${e.message}.`));
       }
@@ -118,21 +118,23 @@ export default function Apply() {
             <option value="">Select Department</option>
             {school === "soc" && (
               <>
-                <option value="cse">CSE</option>
-                <option value="it">IT</option>
-              </>
+                <option value="cs">CSE</option>
+                </>
             )}
             {school === "soe" && (
               <>
-                <option value="ece">ECE</option>
+                <option value="ec">ECE</option>
               </>
             )}
             {school === "sobs" && (
               <>
-                <option value="chemistry">Chemistry</option>
-                <option value="biotech">BioTech</option>
-                <option value="physics">Physics</option>
-                <option value="mathematics">Mathematics</option>
+                <option value="bt">Bio-Technology</option>
+                <option value="ch">Chemistry</option>
+                <option value="en">English</option>
+                <option value="ma">Mathematics</option>
+                <option value="mg">Management</option>
+                <option value="ph">Physics</option>
+                
               </>
             )}
           </select>
