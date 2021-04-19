@@ -66,7 +66,7 @@ export default function SponsoredProject() {
         </Link>
         <Link to={`/dashboard/application/sp/${appId}`}>
           <button className="border-b-4 border-black p-2 text-white font-bold bg-indigo-600">
-            Sponsered Projects
+            Sponsored Projects
           </button>
         </Link>
         <Link to={`/dashboard/application/thesis/${appId}`}>
@@ -87,10 +87,9 @@ export default function SponsoredProject() {
       </div>
       <form id="resformii" onSubmit={onSubmit}>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-          <h1 className="text-2xl text-indigo-600 mb-4">Sponsered Projects</h1>
+          <h1 className="text-2xl text-indigo-600 mb-4">Sponsored Projects</h1>
           <label htmlFor="title" className="text-sm mb-1">
-            Title
-            <span className="text-red-500">*</span>
+            Title<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
@@ -103,8 +102,7 @@ export default function SponsoredProject() {
           />
 
           <label htmlFor="sponsor" className="text-sm mb-1">
-            Sponsor
-            <span className="text-red-500">*</span>
+            Sponsor<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
@@ -113,11 +111,11 @@ export default function SponsoredProject() {
             type="text"
             value={state.sponsor}
             required={true}
-            placeholder={"Enter Sponser name"}
+            placeholder={"Enter Sponsor Name"}
           />
 
           <label htmlFor="amount" className="text-sm mb-1">
-            Amount
+            Amount Sponsored
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -132,7 +130,7 @@ export default function SponsoredProject() {
           />
 
           <label htmlFor="duration" className="text-sm mb-1">
-            Duration (Years)
+            Duration(months)
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -143,11 +141,11 @@ export default function SponsoredProject() {
             min="0"
             value={state.duration}
             required={true}
-            placeholder={"Enter Number"}
+            placeholder={"Enter Months"}
           />
 
           <label htmlFor="start" className="text-sm mb-1">
-            Start
+            Start Date
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -161,7 +159,7 @@ export default function SponsoredProject() {
           />
 
           <label htmlFor="end" className="text-sm mb-1">
-            End
+            End Date
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -175,7 +173,7 @@ export default function SponsoredProject() {
           />
 
           <label htmlFor="outcome" className="text-sm mb-1">
-            Outcomes <span className="text-red-500">*</span>
+            Outcomes of the Project <span className="text-red-500">*</span>
           </label>
           <textarea
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
@@ -188,8 +186,7 @@ export default function SponsoredProject() {
           ></textarea>
 
           <label htmlFor="doc" className="text-sm mb-1">
-            List and description of the projects. (See the help on right side
-            for the details of the list document.){" "}
+            Certificate of the Sponsorship{" "}
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
