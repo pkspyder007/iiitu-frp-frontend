@@ -186,7 +186,7 @@ export default function ResearchPublication() {
               className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
               type={"submit"}
             >
-              Add
+              Submit
             </button>
           </div>
         </div>

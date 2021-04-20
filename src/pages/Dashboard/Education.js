@@ -78,7 +78,7 @@ export default function Education() {
 
         <div className="">
           <label htmlFor="eduMode" className="text-sm mb-1">
-            Select Education Mode <span className="text-red-500">*</span>
+            Select Education Mode<span className="text-red-500">*</span>
           </label>
           <select
             onChange={onEduModeChange}
@@ -87,18 +87,18 @@ export default function Education() {
             id={"eduMode"}
             name={"eduMode"}
             required={true}
-            placeholder=" Education Mode "
+            placeholder="Education Mode"
           >
             <option value="">Select Education</option>
-            <option value="normal">Normal</option>
+            <option value="normal">Normal Mode</option>
             <option value="dual">Dual Degree</option>
-            <option value="dphd">Direct PhD.</option>
+            <option value="dphd">Direct PhD</option>
           </select>
         </div>
         {state.eduMode && (
           <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
             <label htmlFor="education" className="text-sm mb-1">
-              School/College Education <span className="text-red-500">*</span>
+              Level of Education<span className="text-red-500">*</span>
             </label>
             <select
               onChange={onChangeHandler}
@@ -107,9 +107,9 @@ export default function Education() {
               id={"education"}
               name={"education"}
               required={true}
-              placeholder="School/College Education"
+              placeholder="Level of Education"
             >
-              <option value="">Select Education</option>
+              <option value="">Select Level</option>
               {/* <option value="10th">10th / Matriculation</option>
               <option value="10+2">10+2 / Higher Secondary</option> */}
               <option value="UG">Under Graduate (U.G.)</option>
@@ -119,7 +119,7 @@ export default function Education() {
             </select>
 
             <label htmlFor="subject" className="text-sm mb-1">
-              Subject/Specialization <span className="text-red-500">*</span>
+              Name of Degree<span className="text-red-500">*</span>
             </label>
             <SecondaryInput
               onChange={onChangeHandler}
@@ -128,12 +128,11 @@ export default function Education() {
               type="text"
               value={state.subject}
               required={true}
-              placeholder={"Subject Specialization"}
+              placeholder={"e.g. B.Tech./M.Sc./MBA/PhD etc."}
             />
 
             <label htmlFor="insitution" className="text-sm mb-1">
-              Board/University/Institution{" "}
-              <span className="text-red-500">*</span>
+              University/Institution{" "}<span className="text-red-500">*</span>
             </label>
             <SecondaryInput
               onChange={onChangeHandler}
@@ -142,11 +141,11 @@ export default function Education() {
               type="text"
               value={state.institution}
               required={true}
-              placeholder={"Board/University/Institution"}
+              placeholder={"University/Institution"}
             />
 
             <label htmlFor="year" className="text-sm mb-1">
-              Year of Completion <span className="text-red-500">*</span>
+              Year of Completion<span className="text-red-500">*</span>
             </label>
             <SecondaryInput
               onChange={onChangeHandler}
@@ -162,7 +161,7 @@ export default function Education() {
             />
 
             <label htmlFor="percentage" className="text-sm mb-1">
-              CGPA/Percentage <span className="text-red-500">*</span>
+              CGPA/Percentage<span className="text-red-500">*</span>
             </label>
             <SecondaryInput
               onChange={onChangeHandler}
@@ -175,7 +174,7 @@ export default function Education() {
             />
 
             <label htmlFor="doc" className="text-sm mb-1">
-              Degree / Certificate (Upload PDF)
+              Degree/Certificate
               <span className="text-red-500">*</span>
             </label>
             <SecondaryInput
@@ -184,7 +183,7 @@ export default function Education() {
               name="doc"
               type="file"
               required={true}
-              placeholder={"Degree / Certificate"}
+              placeholder={"Degree/Certificate"}
             />
 
             <div className="buttons flex mt-8">
