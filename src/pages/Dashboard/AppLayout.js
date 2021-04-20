@@ -137,12 +137,14 @@ export default function AppLayout(props) {
         >
           Fee Details
         </NavLink>
-        <button
-          className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
-          onClick={() => window.open(`/applications/${appId}/gpdf`)}
-        >
-          Generate Pdf
-        </button>
+        {state.currentStep === 10 && (
+          <NavLink
+            className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
+            to={`/dashboard/application/final/${appId}`}
+          >
+            Final Submit
+          </NavLink>
+        )}
       </div>
       <div className="px-12"> {props.children}</div>
     </div>

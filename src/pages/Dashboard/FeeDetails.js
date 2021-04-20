@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppLayout from "./AppLayout";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 import SecondaryInput from "../../components/SecondaryInput";
 
@@ -16,7 +16,8 @@ export default function FeeDetails() {
   const { appId } = useParams();
   const [state, setState] = useState(initState);
   const alert = useAlert();
-  const { job, setJob } = useState({});
+  const [job, setJob] = useState({});
+  const history = useHistory();
   useEffect(() => {
     axios
       .get(`/applications/${appId}/`)
@@ -62,7 +63,8 @@ export default function FeeDetails() {
       .post(`/applications/${appId}/feeDetails`, data)
       .then((res) => {
         alert.success("Added Successfully");
-        window.location.replace(`/applications/${appId}/gpdf`);
+        history.push(`/dashboard/application/final/${appId}`);
+        // window.location.replace(`/applications/${appId}/gpdf`);
       })
       .catch((err) => {
         // alert.error(err.response.data.msg);
@@ -86,12 +88,9 @@ export default function FeeDetails() {
                   Step 1: Go to{" "}
                   <a
                     className="text-blue-600"
-                    style={{ cursor: "pointer" }}
-                    onClick={() =>
-                      window.open(
-                        "https://www.onlinesbi.com/sbicollect/icollecthome.htm"
-                      )
-                    }
+                    href="https://www.onlinesbi.com/sbicollect/icollecthome.htm"
+                    rel="noreferrer noopener"
+                    target="__blank"
                   >
                     SBI Collect
                   </a>
@@ -115,7 +114,7 @@ export default function FeeDetails() {
                 <p style={{ margin: "5px" }}>Step 6: Enter the details as:</p>
                 <div style={{ marginLeft: "3vw" }}>
                   <p style={{ margin: "5px" }}>Name: {state?.name}</p>
-                  <p style={{ margin: "5px" }}>Adv No.: For later</p>
+                  <p style={{ margin: "5px" }}>Adv No.: {job.adNo}</p>
                   <p style={{ margin: "5px" }}>
                     Post Applied for: {job?.title}
                   </p>

@@ -31,6 +31,7 @@ import Apply from "./pages/Apply";
 import LockApp from "./pages/Dashboard/LockApp";
 import FeeDetails from "./pages/Dashboard/FeeDetails";
 import { Helmet } from "react-helmet";
+import FinalSubmit from "./pages/Dashboard/FinalSubmit";
 
 function App() {
   return (
@@ -87,6 +88,13 @@ function App() {
             exact={true}
           >
             <AppOverview />
+          </ProtectedRoutes>
+          <ProtectedRoutes
+            role="user"
+            path="/dashboard/application/final/:appId"
+            exact={true}
+          >
+            <FinalSubmit />
           </ProtectedRoutes>
           <ProtectedRoutes
             role="user"
