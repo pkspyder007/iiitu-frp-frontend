@@ -12,7 +12,7 @@ export default function Hero() {
             <span className="block text-indigo-600 xl:inline">IIIT UNA</span>
           </h1>
           <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-            IIIT UNA is an institute of national importance under M.H.R.D India.
+            IIIT UNA is an institute of national importance under M.o.E. India.
             We are looking for highly enthusiatic minds to help us out in
             delivering best in class education to our students.
           </p>

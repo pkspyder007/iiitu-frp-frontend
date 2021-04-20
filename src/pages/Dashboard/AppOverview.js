@@ -189,8 +189,8 @@ export default function AppOverview() {
             />
             <Info label="Phone" text={PersonalDetail.phone} />
             <Info label="Email" text={PersonalDetail.email} />
-            <Info label="Fax" text={PersonalDetail.fax} />
-            {/* <Info label="Email" text={PersonalDetail.fax} /> */}
+            {/*<Info label="Fax" text={PersonalDetail.fax} />
+             <Info label="E-mail" text={PersonalDetail.fax} /> */}
             <Info label="Martial Status" text={PersonalDetail.martialStatus} />
             <Info label="Nationality" text={PersonalDetail.nationality} />
             <Info label="Permanent Address" text={PersonalDetail.perAddress} />
@@ -199,8 +199,8 @@ export default function AppOverview() {
             {/* <Info label="Email" text={PersonalDetail.pwd} /> */}
             <Info label="Secondary Phone" text={PersonalDetail.SecPhone} />
             <Info label="Secondary Email" text={PersonalDetail.secEmail} />
-            <Info label="Secondary Fax" text={PersonalDetail.sexFax} />
-            <Info label="Sex" text={PersonalDetail.sex} />
+           {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
+            <Info label="Gender" text={PersonalDetail.sex} />
           </>
         )}
         <div className="flex">
