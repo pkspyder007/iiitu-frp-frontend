@@ -50,7 +50,9 @@ export default function Apply() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!job.school || !job.dept) {
-      alert.error("Please select both School and the corresponding department!");
+      alert.error(
+        "Please select both School and the corresponding department!"
+      );
       return;
     }
 
@@ -119,11 +121,12 @@ export default function Apply() {
             {school === "soc" && (
               <>
                 <option value="cs">CSE</option>
-                </>
+              </>
             )}
             {school === "soe" && (
               <>
                 <option value="ec">ECE</option>
+                <option value="ee">Electrical Engineering</option>
               </>
             )}
             {school === "sobs" && (
@@ -134,7 +137,6 @@ export default function Apply() {
                 <option value="ma">Mathematics</option>
                 <option value="mg">Management</option>
                 <option value="ph">Physics</option>
-                
               </>
             )}
           </select>
