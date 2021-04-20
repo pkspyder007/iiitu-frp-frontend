@@ -199,7 +199,7 @@ export default function AppOverview() {
             {/* <Info label="Email" text={PersonalDetail.pwd} /> */}
             <Info label="Secondary Phone" text={PersonalDetail.SecPhone} />
             <Info label="Secondary Email" text={PersonalDetail.secEmail} />
-            <Info label="Secondary Fax" text={PersonalDetail.sexFax} />
+           {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
             <Info label="Gender" text={PersonalDetail.sex} />
           </>
         )}
