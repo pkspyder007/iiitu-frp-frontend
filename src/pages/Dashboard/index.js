@@ -55,7 +55,7 @@ export default function Dashboard() {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {state.map((app, i) => {
-                    const { id, completed, adNo } = app;
+                    const { id, completed, adNo, feeTid, currentStep } = app;
                     return (
                       <tr key={id}>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -97,7 +97,7 @@ export default function Dashboard() {
                             </td>
                           </>
                         )}
-                        {completed && (
+                        {completed && !feeTid && (
                           <>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                               <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
@@ -110,6 +110,37 @@ export default function Dashboard() {
                                   Enter Fee Details
                                 </span>
                               </Link>
+                            </td>
+                          </>
+                        )}
+                        {completed && feeTid && (
+                          <>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <a href={`/applications/${id}/gpdf`}>
+                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-500 text-white">
+                                  Generate PDF
+                                </span>
+                              </a>
+                            </td>
+                          </>
+                        )}
+                        {completed && currentStep === 10 && (
+                          <>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <Link to={`/dashboard/application/final/${id}`}>
+                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-500 text-white">
+                                  Final Submit
+                                </span>
+                              </Link>
+                            </td>
+                          </>
+                        )}
+                        {completed && currentStep === 20 && (
+                          <>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
+                                Submitted
+                              </span>
                             </td>
                           </>
                         )}

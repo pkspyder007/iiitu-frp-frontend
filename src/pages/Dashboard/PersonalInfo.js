@@ -16,6 +16,8 @@ const initState = {
   sexFax: "",
   secEmail: "",
   DOB: "",
+  dobDoc: "",
+  catDoc: "",
   nationality: "",
   sex: "",
   martialStatus: "",
@@ -68,10 +70,10 @@ export default function PersonalInfo() {
   return (
     <AppLayout>
       <form onSubmit={onSubmit} id="persInfoReg">
-      <h1 className="text-2xl text-indigo-600 mb-4">Personal Information</h1>
+        <h1 className="text-2xl text-indigo-600 mb-4">Personal Information</h1>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
           <label htmlFor="name" className="text-sm mb-1">
-            Name <span className="text-red-500">*</span>
+            Name<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             name="name"
@@ -79,12 +81,12 @@ export default function PersonalInfo() {
             value={state.name}
             onChange={onChangeHandler}
             type="text"
-            placeholder="Name *"
+            placeholder="Full Name"
             required={true}
           />
 
           <label htmlFor="corAddress" className="text-sm mb-1">
-            Correpondence Address <span className="text-red-500">*</span>
+            Correpondence Address<span className="text-red-500">*</span>
           </label>
           <textarea
             id="corAddress"
@@ -94,11 +96,11 @@ export default function PersonalInfo() {
             required={true}
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
             spellCheck="false"
-            placeholder="Correpondence Address *"
+            placeholder="Correpondence Address with Pincode"
           ></textarea>
 
           <label htmlFor="phone" className="text-sm mb-1">
-            Phone <span className="text-red-500">*</span>
+            Phone<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             phone="phone"
@@ -106,12 +108,12 @@ export default function PersonalInfo() {
             value={state.phone}
             onChange={onChangeHandler}
             type="text"
-            placeholder="Phone *"
+            placeholder="Phone"
             required={true}
           />
 
           <label htmlFor="email" className="text-sm mb-1">
-            Email <span className="text-red-500">*</span>
+            E-mail<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             id="email"
@@ -119,12 +121,12 @@ export default function PersonalInfo() {
             value={state.email}
             onChange={onChangeHandler}
             type="email"
-            placeholder="Email *"
+            placeholder="E-mail"
             required={true}
           />
 
           <label htmlFor="perAddress" className="text-sm mb-1">
-            Permanent Address <span className="text-red-500">*</span>
+            Permanent Address<span className="text-red-500">*</span>
           </label>
           <textarea
             id="perAddress"
@@ -134,7 +136,7 @@ export default function PersonalInfo() {
             required={true}
             className="description bg-gray-100 sec p-3 mb-4 h-40 border border-gray-300 outline-none"
             spellCheck="false"
-            placeholder="Permanent Address *"
+            placeholder="Permanent Address"
           ></textarea>
 
           <label htmlFor="secPhone" className="text-sm mb-1">
@@ -146,23 +148,11 @@ export default function PersonalInfo() {
             value={state.secPhone}
             onChange={onChangeHandler}
             type="text"
-            placeholder="Alternate Phone *"
+            placeholder="Alternate Phone"
           />
 
-          <label htmlFor="secEmail" className="text-sm mb-1">
-          Alternate Email
-          </label>
-          <SecondaryInput
-            id="secEmail"
-            name="secEmail"
-            value={state.secEmail}
-            onChange={onChangeHandler}
-            type="email"
-            placeholder="Alternate Email *"
-          />
-
-          <label htmlFor="DOB" className="text-sm mb-1">
-            Date of Birth <span className="text-red-500">*</span>
+        <label htmlFor="DOB" className="text-sm mb-1">
+            Date of Birth<span className="text-red-500">*</span>
           </label>
 
           <SecondaryInput
@@ -171,12 +161,22 @@ export default function PersonalInfo() {
             value={state.DOB}
             onChange={onChangeHandler}
             type="date"
-            placeholder="D.O.B *"
+            placeholder="Date of Birth"
             required={true}
           />
 
+          <label htmlFor="dobDoc" className="text-sm mb-1">
+            Upload DOB certificate/proof<span className="text-red-500">*</span>
+          </label>
+          <SecondaryInput
+            type="file"
+            id="dobDoc"
+            name="dobDoc"
+            onChange={onFileChangeHandler}
+            required={true}
+          />
           <label htmlFor="pwdDoc" className="text-sm mb-1">
-            Nationality <span className="text-red-500">*</span>
+            Nationality<span className="text-red-500">*</span>
           </label>
           <select
             id="nationality"
@@ -187,14 +187,14 @@ export default function PersonalInfo() {
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
             <option value="">Nationality</option>
-            <option value="INDIAN">INDIAN</option>
-            <option value="POI">PIO</option>
+            <option value="INDIAN">Indian</option>
+            <option value="PIO">PIO</option>
             <option value="OCI">OCI</option>
-            <option value="FOREIGNER">FOREIGNER</option>
+            <option value="Foreigner">Foreigner</option>
           </select>
 
           <label htmlFor="sex" className="text-sm mb-1">
-            Gender <span className="text-red-500">*</span>
+            Gender<span className="text-red-500">*</span>
           </label>
           <select
             name="sex"
@@ -203,14 +203,14 @@ export default function PersonalInfo() {
             required={true}
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
-            <option value="">GENDER</option>
-            <option value="MALE">MALE</option>
-            <option value="FEMALE">FEMALE</option>
-            <option value="TRANSGENDER">TRANSGENDER</option>
+            <option value="">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
 
           <label htmlFor="sex" className="text-sm mb-1">
-            Martial Status <span className="text-red-500">*</span>
+            Martial Status<span className="text-red-500">*</span>
           </label>
           <select
             name="martialStatus"
@@ -219,16 +219,14 @@ export default function PersonalInfo() {
             required={true}
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
-            <option value="">Martial Status</option>
-            <option value="SINGLE">SINGLE</option>
-            <option value="MARRIED">MARRIED</option>
-            <option value="DIVORCED">DIVORCED</option>
-            <option value="SEPERATED">SEPERATED</option>
-            <option value="WIDOWED">WIDOWED</option>
+            <option value="">Marital Status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
           </select>
-
           <label htmlFor="sex" className="text-sm mb-1">
-            Category <span className="text-red-500">*</span>
+            Category<span className="text-red-500">*</span>
           </label>
           <select
             name="category"
@@ -239,12 +237,11 @@ export default function PersonalInfo() {
           >
             <option value="">Category</option>
             <option value="UR">UR</option>
-            <option value="OBS">OBS</option>
+            <option value="OBC">OBC</option>
             <option value="SC">SC</option>
             <option value="ST">ST</option>
             <option value="EWS">EWS</option>
           </select>
-
           {state.category !== "UR" ? (
             <>
               <label htmlFor="catDoc" className="text-sm mb-1">
@@ -261,7 +258,7 @@ export default function PersonalInfo() {
           ) : null}
 
           <label htmlFor="pwd" className="text-sm mb-1">
-            Persone with Disability <span className="text-red-500">*</span>
+            Whether person with disabilities?<span className="text-red-500">*</span>
           </label>
           <select
             id="pwd"
@@ -269,14 +266,14 @@ export default function PersonalInfo() {
             value={state.pwd}
             onChange={onChangeHandler}
             required={true}
-            defaultChecked="NO"
+            defaultChecked="No"
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
-            <option value="NO">NO</option>
-            <option value="YES">YES</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
 
-          {state.pwd === "YES" ? (
+          {state.pwd === "Yes" ? (
             <>
               <label htmlFor="pwdDoc" className="text-sm mb-1">
                 Upload PWD certificate document.
@@ -286,13 +283,13 @@ export default function PersonalInfo() {
                 id="pwdDoc"
                 name="pwdDoc"
                 onChange={onFileChangeHandler}
-                required={state.pwd === "YES"}
+                required={state.pwd === "Yes"}
               />
             </>
           ) : null}
 
           <label htmlFor="pwdDoc" className="text-sm mb-1">
-            Govt. issued ID-Card (PDF) <span className="text-red-500">*</span>
+            Govt. issued ID-Card<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onFileChangeHandler}
@@ -303,7 +300,7 @@ export default function PersonalInfo() {
           />
 
           <label htmlFor="pwdDoc" className="text-sm mb-1">
-            Recent Photograph <span className="text-red-500">*</span>
+            Recent Photograph(jpg/jpeg/png only)<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onFileChangeHandler}

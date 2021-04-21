@@ -29,9 +29,7 @@ export default function LockApp() {
     <div>
       <AppLayout>
         <div className="editor w-screen mb-10 w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-          <h1 className="text-2xl text-indigo-600 mb-4">
-            Lock Application (Final Submit)
-          </h1>
+          <h1 className="text-2xl text-indigo-600 mb-4">Lock Application</h1>
           <p className="text-secondary">
             Before submitting the application please make sure to preview the
             details once. <br />{" "}

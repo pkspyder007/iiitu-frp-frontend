@@ -74,18 +74,22 @@ export default function OtherInfo() {
           >
             <option value="">Select Type</option>
             <option value="normal">Award/Honor</option>
-          {/* <option value="dual">Honor</option> */}
-            <option value="AcadmicRecognization">Academic Credentials/Recognization</option>
-            <option value="Membership">
-              Membership/ Fellowship of a Professional society
+            {/* <option value="dual">Honor</option> */}
+            <option value="AcadmicRecognization">
+              Academic Credentials/Recognization
             </option>
-            <option value="specialTraning">Special training/proficiency</option>
-            <option value="Proficiency">Proficiency / Revent Information</option>
-            <option value="Others">Others(Relevent to Application)</option>
+            <option value="Membership">
+              Membership/Fellowship of any Professional society
+            </option>
+            <option value="specialTraning">Special training/Proficiency</option>
+            {/*<option value="Proficiency">
+              Proficiency / Revent Information
+            </option>*/}
+            <option value="Others">Other(Relevent to the Application)</option>
           </select>
 
           <label htmlFor="subject" className="text-sm mb-1">
-            Title <span className="text-red-500">*</span>
+            Title<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
@@ -99,7 +103,7 @@ export default function OtherInfo() {
 
           <hr className="mb-4" />
           <label htmlFor="subject" className="text-sm mb-1">
-            Awarding Organization <span className="text-red-500">*</span>
+            Awarding Organization<span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             onChange={onChangeHandler}
@@ -118,10 +122,10 @@ export default function OtherInfo() {
             onChange={onChangeHandler}
             id="subject"
             name="amount"
-            type="number"
+            type="text"
             value={state.amount}
             required={true}
-            placeholder={"Amount if any"}
+            placeholder={"Remarks"}
           />
           <label htmlFor="subject" className="text-sm mb-1">
             Date of Award/membership/honour{" "}
@@ -134,7 +138,7 @@ export default function OtherInfo() {
             type="date"
             value={state.date}
             required={true}
-            placeholder={"Date of Award/membership/honour"}
+            placeholder={"Date of Award"}
           />
 
           <label htmlFor="awards" className="text-sm mb-1">
