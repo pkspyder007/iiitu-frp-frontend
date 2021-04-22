@@ -9,6 +9,7 @@ const initState = {
   feeTid: "",
   feeDate: "0",
   feeReciept: "",
+  feeAmount: "",
   appId: "",
 };
 
@@ -129,7 +130,7 @@ export default function FeeDetails() {
                 <h1 className="text-2xl text-indigo-600 mb-4 mt-4">
                   Fee Details
                 </h1>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} className="flex flex-col">
                   <label htmlFor="feeTid" className="text-sm mb-1">
                     Tansition Id <span className="text-red-500">*</span>
                   </label>
@@ -152,6 +153,19 @@ export default function FeeDetails() {
                     onChange={onChangeHandler}
                     type="date"
                     placeholder="PaymentDate *"
+                    required={true}
+                  />
+                  <label htmlFor="feeAmount" className="text-sm mb-1">
+                    FEE Amount Paid <span className="text-red-500">*</span>
+                  </label>
+                  <SecondaryInput
+                    name="feeAmount"
+                    id="feeAmount"
+                    value={state.feeAmount}
+                    onChange={onChangeHandler}
+                    type="number"
+                    min={0}
+                    placeholder="FEE AMOUNT PAID  *"
                     required={true}
                   />
                   <label htmlFor="feeReciept" className="text-sm mb-1">
