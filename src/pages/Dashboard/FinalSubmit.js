@@ -9,6 +9,7 @@ const initState = {
   feeTid: "",
   feeDate: "0",
   feeReciept: "",
+  feeAmount: "",
   appId: "",
 };
 
@@ -24,6 +25,7 @@ export default function FinalSubmit() {
         if (data.app.refNum !== "NIL") {
           setState({
             ...state,
+            feeAmount: data.app.feeAmount,
             name: data.app.PersonalDetail.name,
             appNum: data.app.refNum,
           });
@@ -81,7 +83,7 @@ export default function FinalSubmit() {
                   <p style={{ margin: "5px" }}>
                     Application No.: {state?.appNum}{" "}
                   </p>
-                  <p style={{ margin: "5px" }}>Fee: 100</p>
+                  <p style={{ margin: "5px" }}>Fee: {state.feeAmount}</p>
                 </div>
 
                 <BtnLg title="Final Submit" onClick={onSubmit} />
