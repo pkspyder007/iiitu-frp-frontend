@@ -54,13 +54,14 @@ export default function General() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let data = new FormData();
-    for (let [key, value] of Object.entries(state)) {
-      data.append(key, value);
-    }
+    console.log(state)
+    // let data = new FormData();
+    // for (let [key, value] of Object.entries(state)) {
+    //   data.append(key, value);
+    // }
 
     axios
-      .post(`/applications/${appId}/general`, data)
+      .post(`/applications/${appId}/general`, state)
       .then((res) => {
         alert.success(res.data.msg);
         resetForm();
