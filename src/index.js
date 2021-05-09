@@ -9,7 +9,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.NODE_ENV === "development" ? "http://localhost:4000/" : "http://65.1.105.247/";
+axios.defaults.baseURL = API_URL
 axios.defaults.withCredentials = true;
 
 console.log(axios.defaults.baseURL);
