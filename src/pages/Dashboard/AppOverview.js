@@ -9,8 +9,8 @@ function getStaticUrl(link) {
   let finalImage = str[1];
   if (str[1][0] === "\\") {
     finalImage = str[1].split("\\").join("/");
-    return finalImage;
   }
+  return finalImage;
 }
 
 export default function AppOverview() {
