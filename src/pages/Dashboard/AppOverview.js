@@ -4,6 +4,15 @@ import { useParams, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Spinner from "../../components/Spinner";
 
+function getStaticUrl(link) {
+  let str = link.split("uploads");
+  let finalImage = str[1];
+  if (str[1][0] === "\\") {
+    finalImage = str[1].split("\\").join("/");
+    return finalImage;
+  }
+}
+
 export default function AppOverview() {
   const [state, setState] = useState({});
   const { appId } = useParams();
@@ -23,7 +32,7 @@ export default function AppOverview() {
 
   // delete/reset functions
   const deleteApp = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/personal/${id}`)
       .then((res) => {
@@ -32,7 +41,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteAcadExp = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/acadexp/${id}`)
       .then((res) => {
@@ -41,7 +50,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteAcadQual = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/acadqual/${id}`)
       .then((res) => {
@@ -50,7 +59,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteFututrePlans = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/futureplans/${id}`)
       .then((res) => {
@@ -59,7 +68,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteBestPapers = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/bestpapers/${id}`)
       .then((res) => {
@@ -68,7 +77,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteGeneralQues = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/generalques/${id}`)
       .then((res) => {
@@ -77,7 +86,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteIndExp = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/indexp/${id}`)
       .then((res) => {
@@ -86,7 +95,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteOtherInfo = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/otherinfo/${id}`)
       .then((res) => {
@@ -95,7 +104,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deletePublications = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/publications/${id}`)
       .then((res) => {
@@ -104,7 +113,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deletePatents = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/patents/${id}`)
       .then((res) => {
@@ -113,7 +122,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteReferees = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/referees/${id}`)
       .then((res) => {
@@ -122,7 +131,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteResearch = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/research/${id}`)
       .then((res) => {
@@ -131,7 +140,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteSOP = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/sop/${id}`)
       .then((res) => {
@@ -140,7 +149,7 @@ export default function AppOverview() {
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
   const deleteThesis = (id) => {
-    if(!id) return;
+    if (!id) return;
     axios
       .delete(`/applications/thesis/${id}`)
       .then((res) => {
@@ -148,7 +157,6 @@ export default function AppOverview() {
       })
       .catch((err) => alert.error(err?.response?.data?.msg));
   };
-
 
   // end delete/reset functions
 
@@ -160,13 +168,13 @@ export default function AppOverview() {
     BestPaper,
     GeneralQue,
     IndustryExps,
-    OtherInfo,
-    Patent,
-    Publication,
+    OtherInfos,
+    Patents,
+    Publications,
     Referees,
     Research,
     SOP,
-    Thesis,
+    Theses: Thesis,
   } = state;
 
   return !state.id ? (
@@ -182,7 +190,33 @@ export default function AppOverview() {
           <>
             <Info label="Name" text={PersonalDetail.name} />
             <Info label="DOB" text={PersonalDetail.DOB} />
+            {PersonalDetail.dobDoc && <Info
+                label="DOB certificate"
+                text={
+                  <a
+                    href={getStaticUrl(PersonalDetail.dobDoc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />}
             <Info label="Category" text={PersonalDetail.category} />
+            {PersonalDetail.catDoc && <Info
+                label="Category certificate"
+                text={
+                  <a
+                    href={getStaticUrl(PersonalDetail.catDoc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />}
             <Info
               label="Correspondence Address"
               text={PersonalDetail.corAddress}
@@ -199,8 +233,34 @@ export default function AppOverview() {
             {/* <Info label="Email" text={PersonalDetail.pwd} /> */}
             <Info label="Secondary Phone" text={PersonalDetail.SecPhone} />
             <Info label="Secondary Email" text={PersonalDetail.secEmail} />
-           {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
+            {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
             <Info label="Gender" text={PersonalDetail.sex} />
+            {PersonalDetail.photo && <Info
+                label="Photograph"
+                text={
+                  <a
+                    href={getStaticUrl(PersonalDetail.photo)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Photograph
+                  </a>
+                }
+              />}
+              {PersonalDetail.govtIdCard && <Info
+                label="Govt. Id card"
+                text={
+                  <a
+                    href={getStaticUrl(PersonalDetail.govtIdCard)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />}
           </>
         )}
         <div className="flex">
@@ -234,10 +294,26 @@ export default function AppOverview() {
               <Info label="To" text={e.to} />
               <Info label="Nature of Duties" text={e.natureOfDuties} />
               <Info label="Salary" text={e.salary} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(e.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
               {/* <Info label="Salary" text={e.salary} /> */}
               <div className="flex">
                 <p>
-                  <button onClick={() => deleteAcadExp(e?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+                  <button
+                    onClick={() => deleteAcadExp(e?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
                     Delete Record
                   </button>
                 </p>
@@ -269,10 +345,26 @@ export default function AppOverview() {
               <Info label="Percentage" text={e.percentage} />
               <Info label="Year" text={e.year} />
               {/* <Info label="Salary" text={e.salary} /> */}
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(e.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
 
               <div className="flex">
                 <p>
-                  <button onClick={() => deleteAcadQual(e?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+                  <button
+                    onClick={() => deleteAcadQual(e?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
                     Delete Record
                   </button>
                 </p>
@@ -305,10 +397,26 @@ export default function AppOverview() {
               <Info label="To" text={e.to} />
               <Info label="Nature of Duties" text={e.natureOfDuties} />
               <Info label="Salary" text={e.salary} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(e.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
               {/* <Info label="Salary" text={e.salary} /> */}
               <div className="flex">
                 <p>
-                  <button onClick={() => deleteIndExp(e?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+                  <button
+                    onClick={() => deleteIndExp(e?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
                     Delete Record
                   </button>
                 </p>
@@ -336,7 +444,10 @@ export default function AppOverview() {
               {/* <Info label="Salary" text={e.salary} /> */}
               <div className="flex">
                 <p>
-                  <button onClick={() => deleteBestPapers(BestPaper?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+                  <button
+                    onClick={() => deleteBestPapers(BestPaper?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
                     Delete Record
                   </button>
                 </p>
@@ -361,11 +472,26 @@ export default function AppOverview() {
           <hr className="my-3" />
           {FuturePlan && (
             <div key={FuturePlan.id}>
-              <Info label="Id" text={FuturePlan.id} />
+              <Info
+                label="File"
+                text={
+                  <a
+                    href={getStaticUrl(FuturePlan.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
               {/* <Info label="Salary" text={e.salary} /> */}
               <div className="flex">
                 <p>
-                  <button onClick={() => deleteFututrePlans(FuturePlan?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+                  <button
+                    onClick={() => deleteFututrePlans(FuturePlan?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
                     Delete Record
                   </button>
                 </p>
@@ -406,7 +532,10 @@ export default function AppOverview() {
             </button>
           </Link>
           <p>
-            <button onClick={() => deleteGeneralQues(GeneralQue?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+            <button
+              onClick={() => deleteGeneralQues(GeneralQue?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
               Reset Details
             </button>
           </p>
@@ -417,49 +546,57 @@ export default function AppOverview() {
       <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
         <h1 className="text-indigo-600 text-lg font-bold">Other Information</h1>
         <hr className="my-3" />
-        {OtherInfo && (
+        {OtherInfos && (
           <>
-            {OtherInfo.awards && <Info label="Awards" text={"award"} />}
-            {OtherInfo.extraCirricular && (
-              <Info label="Extra Cirricular" text={"EX"} />
-            )}
-            {OtherInfo.membership && (
-              <Info label="Membership" text={OtherInfo.membership} />
-            )}
-            {OtherInfo.special && (
-              <Info label="Special" text={OtherInfo.special} />
-            )}
-            {OtherInfo.others && (
-              <Info label="Others" text={OtherInfo.others} />
-            )}
+            {OtherInfos.map((d) => (
+              <>
+              <Info label={"Awarded By"} text={`${d.by}`} />
+              <Info label={"Title"} text={`${d.title}`} />
+              <Info label={"Date"} text={`${d.date}`} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(d.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              </>
+            ))}
+            <div className="flex">
+              <Link to={`/dashboard/application/otherinfo/${appId}/`}>
+                <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                  Enter Details
+                </button>
+              </Link>
+              <p>
+                <button
+                  onClick={() => deleteOtherInfo(OtherInfos[0]?.id)}
+                  className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                >
+                  Reset Details
+                </button>
+              </p>
+            </div>
           </>
         )}
-        <div className="flex">
-          <Link to={`/dashboard/application/otherinfo/${appId}/`}>
-            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-              Enter Details
-            </button>
-          </Link>
-          <p>
-            <button onClick={() => deleteOtherInfo(OtherInfo?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
-              Reset Details
-            </button>
-          </p>
-        </div>
       </div>
 
       {/* Ptensts */}
       <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
         <h1 className="text-indigo-600 text-lg font-bold">Patents</h1>
         <hr className="my-3" />
-        {Patent && (
-          <>
-            {Patent.noOfPatents !== "0" && (
-              <Info label="Number Of Patents" text={Patent.noOfPatents} />
-            )}
-            {Patent.list && <Info label="List" text={Patent.list} />}
-          </>
-        )}
+        {Patents && Patents.map(p => (<>
+          <Info label="Name" text={p.name} />
+          <Info label="Status" text={p.status} />
+          <Info label="Number" text={p.num} />
+          <Info label="Year" text={p.year} />
+        </>))}
         <div className="flex">
           <Link to={`/dashboard/application/patents/${appId}/`}>
             <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
@@ -467,7 +604,10 @@ export default function AppOverview() {
             </button>
           </Link>
           <p>
-            <button onClick={() => deletePatents(Patent?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+            <button
+              onClick={() => deletePatents(Patents[0]?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
               Reset Details
             </button>
           </p>
@@ -480,47 +620,64 @@ export default function AppOverview() {
           Research Publications
         </h1>
         <hr className="my-3" />
-        {Publication && (
-          <>
-            {<Info label="Number Of books" text={`${Publication.books}`} />}
-            {
+        {Publications &&
+          Publications.map((p) => (
+            <>
+              {<Info label="Number Of books" text={`${p.books}`} />}
+              {
+                <Info
+                  label="Number Of National conferences"
+                  text={`${p.nConf}`}
+                />
+              }
+              {
+                <Info
+                  label="Number Of international conferences"
+                  text={`${p.iConf}`}
+                />
+              }
+              {
+                <Info
+                  label="Number Of National journals"
+                  text={`${p.nJournals}`}
+                />
+              }
+              {
+                <Info
+                  label="Number Of international journals"
+                  text={`${p.iJournals}`}
+                />
+              }
               <Info
-                label="Number Of National conferences"
-                text={`${Publication.nConf}`}
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(p.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
               />
-            }
-            {
-              <Info
-                label="Number Of international conferences"
-                text={`${Publication.iConf}`}
-              />
-            }
-            {
-              <Info
-                label="Number Of National journals"
-                text={`${Publication.nJournals}`}
-              />
-            }
-            {
-              <Info
-                label="Number Of international journals"
-                text={`${Publication.iJournals}`}
-              />
-            }
-          </>
-        )}
-        <div className="flex">
-          <Link to={`/dashboard/application/research/${appId}/`}>
-            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-              Enter Details
-            </button>
-          </Link>
-          <p>
-            <button onClick={() => deletePublications(Publication?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
-              Reset Details
-            </button>
-          </p>
-        </div>
+            </>
+          ))}
+              <div className="flex">
+                <Link to={`/dashboard/application/research/${appId}/`}>
+                  <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                    Enter Details
+                  </button>
+                </Link>
+                <p>
+                  <button
+                    onClick={() => deletePublications(Patents[0]?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
+                    Reset Details
+                  </button>
+                </p>
+              </div>
       </div>
 
       {/* SOP */}
@@ -543,7 +700,10 @@ export default function AppOverview() {
             </button>
           </Link>
           <p>
-            <button onClick={() => deleteSOP(SOP?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+            <button
+              onClick={() => deleteSOP(SOP?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
               Reset Details
             </button>
           </p>
@@ -556,7 +716,30 @@ export default function AppOverview() {
           Sponsered Projects Information
         </h1>
         <hr className="my-3" />
-        {Research && <Info label="You have filled the details" />}
+        {Research &&
+          Research.map((rs) => (
+            <>
+              <Info label="Title" text={rs.title} />
+              <Info label="Sponsor" text={rs.sponsor} />
+              <Info label="Outcome" text={rs.outcome} />
+              <Info label="Amount" text={rs.amount} />
+              <Info label="Start" text={rs.start} />
+              <Info label="End" text={rs.end} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(rs.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+            </>
+          ))}
         <hr className="my-3" />
         <div className="flex">
           <Link to={`/dashboard/application/sp/${appId}/`}>
@@ -565,7 +748,10 @@ export default function AppOverview() {
             </button>
           </Link>
           <p>
-            <button onClick={() => deleteResearch(Research?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+            <button
+              onClick={() => deleteResearch(Research[0]?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
               Reset Details
             </button>
           </p>
@@ -578,7 +764,32 @@ export default function AppOverview() {
           Thesis Supervised{" "}
         </h1>
         <hr className="my-3" />
-        {Thesis && <Info label="You have filled the details" />}
+        {Thesis &&
+          Thesis.map((t) => {
+            return (
+              <>
+                <Info label="Type" text={t.type} />
+                <Info label="Candidate Name" text={t.nameOfCandiadate} />
+                <Info label="Insitute Name" text={t.institute} />
+                <Info label="Year" text={t.regYear} />
+                <Info label="Status" text={t.status || "NA"} />
+                <Info label="Final Viva" text={t.finalViva} />
+                <Info
+                  label="Document"
+                  text={
+                    <a
+                      href={getStaticUrl(t.doc)}
+                      className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                      target="__blank"
+                      referrer="noreferrer noopenner"
+                    >
+                      View Document
+                    </a>
+                  }
+                />
+              </>
+            );
+          })}
         <hr className="my-3" />
         <div className="flex">
           <Link to={`/dashboard/application/thesis/${appId}/`}>
@@ -587,7 +798,10 @@ export default function AppOverview() {
             </button>
           </Link>
           <p>
-            <button onClick={() => deleteThesis(Thesis?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+            <button
+              onClick={() => deleteThesis(Thesis[0]?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
               Reset Details
             </button>
           </p>
@@ -613,7 +827,10 @@ export default function AppOverview() {
               {/* <Info label="Salary" text={e.salary} /> */}
               <div className="flex">
                 <p>
-                  <button onClick={() => deleteReferees(e?.id)} className="bg-red-500 px-3 py-1 m-2 rounded text-white">
+                  <button
+                    onClick={() => deleteReferees(e?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
                     Delete Record
                   </button>
                 </p>

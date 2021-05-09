@@ -12,6 +12,8 @@ import AlertTemplate from "react-alert-template-basic";
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true;
 
+console.log(axios.defaults.baseURL);
+
 const options = {
   timeout: 5000,
   position: positions.TOP_RIGHT,
