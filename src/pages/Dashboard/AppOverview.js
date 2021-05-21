@@ -165,7 +165,7 @@ export default function AppOverview() {
     AcadExperiences,
     AcadQualifications,
     FuturePlan,
-    BestPaper,
+    BestPapers,
     GeneralQue,
     IndustryExps,
     OtherInfos,
@@ -222,6 +222,7 @@ export default function AppOverview() {
               text={PersonalDetail.corAddress}
             />
             <Info label="Phone" text={PersonalDetail.phone} />
+            
             <Info label="Email" text={PersonalDetail.email} />
             {/*<Info label="Fax" text={PersonalDetail.fax} />
              <Info label="E-mail" text={PersonalDetail.fax} /> */}
@@ -230,9 +231,24 @@ export default function AppOverview() {
             <Info label="Permanent Address" text={PersonalDetail.perAddress} />
             {/* <Info label="Email" text={PersonalDetail.phone} /> */}
             <Info label="PWD" text={PersonalDetail.pwd} />
+            {
+              PersonalDetail.pwdDoc&&<Info
+              label="Pwd document "
+              text={
+                <a
+                  href={getStaticUrl(PersonalDetail.pwdDoc)}
+                  className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                  target="__blank"
+                  referrer="noreferrer noopenner"
+                >
+                  View Document
+                </a>
+              }
+            />
+            }
             {/* <Info label="Email" text={PersonalDetail.pwd} /> */}
-            <Info label="Secondary Phone" text={PersonalDetail.SecPhone} />
-            <Info label="Secondary Email" text={PersonalDetail.secEmail} />
+            <Info label="Secondary Phone" text={PersonalDetail.secPhone} />
+            {/* <Info label="Secondary Email" text={PersonalDetail.secEmail} /> */}
             {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
             <Info label="Gender" text={PersonalDetail.sex} />
             {PersonalDetail.photo && <Info
@@ -434,18 +450,34 @@ export default function AppOverview() {
       </div>
 
       {/* Best Papers */}
-      {BestPaper && (
+      {BestPapers && (
         <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
           <h1 className="text-indigo-600 text-lg font-bold">Best Papers</h1>
           <hr className="my-3" />
-          {BestPaper && (
-            <div key={BestPaper.id}>
-              <Info label="Id" text={BestPaper.id} />
+          {BestPapers && 
+          BestPapers.map((obj)=>(
+            <div key={obj.id}>
+              <Info label="Publisher" text={obj.publisher} />
+              <Info label="Title" text={obj.title} />
+              <Info label="Year Of Publish" text={obj.yearOfPub} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(obj.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
               {/* <Info label="Salary" text={e.salary} /> */}
               <div className="flex">
                 <p>
                   <button
-                    onClick={() => deleteBestPapers(BestPaper?.id)}
+                    onClick={() => deleteBestPapers(obj?.id)}
                     className="bg-red-500 px-3 py-1 m-2 rounded text-white"
                   >
                     Delete Record
@@ -454,7 +486,7 @@ export default function AppOverview() {
               </div>
               <hr className="my-3" />
             </div>
-          )}
+          ))}
           <div className="flex">
             <Link to={`/dashboard/application/bestpapers/${appId}/`}>
               <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
@@ -689,7 +721,22 @@ export default function AppOverview() {
         {SOP && (
           <>
             {SOP.sop !== "0" && (
-              <Info label="Number Of Patents" text={SOP.sop} />
+              <>
+              <Info label="Purpose" text={SOP.sop} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(SOP.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              </>
             )}
           </>
         )}
@@ -769,8 +816,8 @@ export default function AppOverview() {
             return (
               <>
                 <Info label="Type" text={t.type} />
-                <Info label="Candidate Name" text={t.nameOfCandiadate} />
-                <Info label="Insitute Name" text={t.institute} />
+                <Info label="Candidate Name" text={t.nameOfCandidate} />
+                <Info label="Insitute Name" text={t.insitute} />
                 <Info label="Year" text={t.regYear} />
                 <Info label="Status" text={t.status || "NA"} />
                 <Info label="Final Viva" text={t.finalViva} />
