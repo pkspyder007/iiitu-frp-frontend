@@ -190,7 +190,8 @@ export default function AppOverview() {
           <>
             <Info label="Name" text={PersonalDetail.name} />
             <Info label="DOB" text={PersonalDetail.DOB} />
-            {PersonalDetail.dobDoc && <Info
+            {PersonalDetail.dobDoc && (
+              <Info
                 label="DOB certificate"
                 text={
                   <a
@@ -202,9 +203,11 @@ export default function AppOverview() {
                     View Document
                   </a>
                 }
-              />}
+              />
+            )}
             <Info label="Category" text={PersonalDetail.category} />
-            {PersonalDetail.catDoc && <Info
+            {PersonalDetail.catDoc && (
+              <Info
                 label="Category certificate"
                 text={
                   <a
@@ -216,7 +219,8 @@ export default function AppOverview() {
                     View Document
                   </a>
                 }
-              />}
+              />
+            )}
             <Info
               label="Correspondence Address"
               text={PersonalDetail.corAddress}
@@ -235,7 +239,8 @@ export default function AppOverview() {
             <Info label="Secondary Email" text={PersonalDetail.secEmail} />
             {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
             <Info label="Gender" text={PersonalDetail.sex} />
-            {PersonalDetail.photo && <Info
+            {PersonalDetail.photo && (
+              <Info
                 label="Photograph"
                 text={
                   <a
@@ -247,8 +252,10 @@ export default function AppOverview() {
                     View Photograph
                   </a>
                 }
-              />}
-              {PersonalDetail.govtIdCard && <Info
+              />
+            )}
+            {PersonalDetail.govtIdCard && (
+              <Info
                 label="Govt. Id card"
                 text={
                   <a
@@ -260,7 +267,8 @@ export default function AppOverview() {
                     View Document
                   </a>
                 }
-              />}
+              />
+            )}
           </>
         )}
         <div className="flex">
@@ -433,186 +441,7 @@ export default function AppOverview() {
         </div>
       </div>
 
-      {/* Best Papers */}
-      {BestPaper && (
-        <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
-          <h1 className="text-indigo-600 text-lg font-bold">Best Papers</h1>
-          <hr className="my-3" />
-          {BestPaper && (
-            <div key={BestPaper.id}>
-              <Info label="Id" text={BestPaper.id} />
-              {/* <Info label="Salary" text={e.salary} /> */}
-              <div className="flex">
-                <p>
-                  <button
-                    onClick={() => deleteBestPapers(BestPaper?.id)}
-                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
-                  >
-                    Delete Record
-                  </button>
-                </p>
-              </div>
-              <hr className="my-3" />
-            </div>
-          )}
-          <div className="flex">
-            <Link to={`/dashboard/application/bestpapers/${appId}/`}>
-              <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-                Enter New Record
-              </button>
-            </Link>
-          </div>
-        </div>
-      )}
-
-      {/* Future Plans */}
-      {FuturePlan && (
-        <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
-          <h1 className="text-indigo-600 text-lg font-bold">Future Plans</h1>
-          <hr className="my-3" />
-          {FuturePlan && (
-            <div key={FuturePlan.id}>
-              <Info
-                label="File"
-                text={
-                  <a
-                    href={getStaticUrl(FuturePlan.doc)}
-                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
-                    target="__blank"
-                    referrer="noreferrer noopenner"
-                  >
-                    View Document
-                  </a>
-                }
-              />
-              {/* <Info label="Salary" text={e.salary} /> */}
-              <div className="flex">
-                <p>
-                  <button
-                    onClick={() => deleteFututrePlans(FuturePlan?.id)}
-                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
-                  >
-                    Delete Record
-                  </button>
-                </p>
-              </div>
-              <hr className="my-3" />
-            </div>
-          )}
-          <div className="flex">
-            <Link to={`/dashboard/application/futureplans/${appId}/`}>
-              <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-                Enter New Record
-              </button>
-            </Link>
-          </div>
-        </div>
-      )}
-
-      {/* General Questions */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
-        <h1 className="text-indigo-600 text-lg font-bold">General Questions</h1>
-        <hr className="my-3" />
-        {GeneralQue && (
-          <>
-            {GeneralQue.one && <Info label="Ques 1" text={GeneralQue.one} />}
-
-            {GeneralQue.two && <Info label="Ques 2" text={GeneralQue.two} />}
-            {GeneralQue.three && (
-              <Info label="Ques 3" text={GeneralQue.three} />
-            )}
-            {GeneralQue.four && <Info label="Ques 4" text={GeneralQue.four} />}
-            {GeneralQue.five && <Info label="Ques 5" text={GeneralQue.five} />}
-          </>
-        )}
-        <div className="flex">
-          <Link to={`/dashboard/application/generalques/${appId}/`}>
-            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-              Enter Details
-            </button>
-          </Link>
-          <p>
-            <button
-              onClick={() => deleteGeneralQues(GeneralQue?.id)}
-              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
-            >
-              Reset Details
-            </button>
-          </p>
-        </div>
-      </div>
-
-      {/* Other Information */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
-        <h1 className="text-indigo-600 text-lg font-bold">Other Information</h1>
-        <hr className="my-3" />
-        {OtherInfos && (
-          <>
-            {OtherInfos.map((d) => (
-              <>
-              <Info label={"Awarded By"} text={`${d.by}`} />
-              <Info label={"Title"} text={`${d.title}`} />
-              <Info label={"Date"} text={`${d.date}`} />
-              <Info
-                label="Document"
-                text={
-                  <a
-                    href={getStaticUrl(d.doc)}
-                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
-                    target="__blank"
-                    referrer="noreferrer noopenner"
-                  >
-                    View Document
-                  </a>
-                }
-              />
-              </>
-            ))}
-            <div className="flex">
-              <Link to={`/dashboard/application/otherinfo/${appId}/`}>
-                <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-                  Enter Details
-                </button>
-              </Link>
-              <p>
-                <button
-                  onClick={() => deleteOtherInfo(OtherInfos[0]?.id)}
-                  className="bg-red-500 px-3 py-1 m-2 rounded text-white"
-                >
-                  Reset Details
-                </button>
-              </p>
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* Ptensts */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
-        <h1 className="text-indigo-600 text-lg font-bold">Patents</h1>
-        <hr className="my-3" />
-        {Patents && Patents.map(p => (<>
-          <Info label="Name" text={p.name} />
-          <Info label="Status" text={p.status} />
-          <Info label="Number" text={p.num} />
-          <Info label="Year" text={p.year} />
-        </>))}
-        <div className="flex">
-          <Link to={`/dashboard/application/patents/${appId}/`}>
-            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-              Enter Details
-            </button>
-          </Link>
-          <p>
-            <button
-              onClick={() => deletePatents(Patents[0]?.id)}
-              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
-            >
-              Reset Details
-            </button>
-          </p>
-        </div>
-      </div>
+      
 
       {/* Publications */}
       <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
@@ -663,45 +492,15 @@ export default function AppOverview() {
               />
             </>
           ))}
-              <div className="flex">
-                <Link to={`/dashboard/application/research/${appId}/`}>
-                  <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
-                    Enter Details
-                  </button>
-                </Link>
-                <p>
-                  <button
-                    onClick={() => deletePublications(Patents[0]?.id)}
-                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
-                  >
-                    Reset Details
-                  </button>
-                </p>
-              </div>
-      </div>
-
-      {/* SOP */}
-      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
-        <h1 className="text-indigo-600 text-lg font-bold">
-          SOP - Statement of purpose
-        </h1>
-        <hr className="my-3" />
-        {SOP && (
-          <>
-            {SOP.sop !== "0" && (
-              <Info label="Number Of Patents" text={SOP.sop} />
-            )}
-          </>
-        )}
         <div className="flex">
-          <Link to={`/dashboard/application/sop/${appId}/`}>
+          <Link to={`/dashboard/application/research/${appId}/`}>
             <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
               Enter Details
             </button>
           </Link>
           <p>
             <button
-              onClick={() => deleteSOP(SOP?.id)}
+              onClick={() => deletePublications(Patents[0]?.id)}
               className="bg-red-500 px-3 py-1 m-2 rounded text-white"
             >
               Reset Details
@@ -807,6 +606,222 @@ export default function AppOverview() {
           </p>
         </div>
       </div>
+
+      {/* Best Papers */}
+      {BestPaper && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Best Papers</h1>
+          <hr className="my-3" />
+          {BestPaper && (
+            <div key={BestPaper.id}>
+              <Info label="Id" text={BestPaper.id} />
+              {/* <Info label="Salary" text={e.salary} /> */}
+              <div className="flex">
+                <p>
+                  <button
+                    onClick={() => deleteBestPapers(BestPaper?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
+                    Delete Record
+                  </button>
+                </p>
+              </div>
+              <hr className="my-3" />
+            </div>
+          )}
+          <div className="flex">
+            <Link to={`/dashboard/application/bestpapers/${appId}/`}>
+              <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                Enter New Record
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+
+       {/* Ptensts */}
+       <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">Patents</h1>
+        <hr className="my-3" />
+        {Patents &&
+          Patents.map((p) => (
+            <>
+              <Info label="Name" text={p.name} />
+              <Info label="Status" text={p.status} />
+              <Info label="Number" text={p.num} />
+              <Info label="Year" text={p.year} />
+            </>
+          ))}
+        <div className="flex">
+          <Link to={`/dashboard/application/patents/${appId}/`}>
+            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+              Enter Details
+            </button>
+          </Link>
+          <p>
+            <button
+              onClick={() => deletePatents(Patents[0]?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
+              Reset Details
+            </button>
+          </p>
+        </div>
+      </div>
+
+      {/* SOP */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">
+          SOP - Statement of purpose
+        </h1>
+        <hr className="my-3" />
+        {SOP && (
+          <>
+            {SOP.sop !== "0" && (
+              <Info label="Number Of Patents" text={SOP.sop} />
+            )}
+          </>
+        )}
+        <div className="flex">
+          <Link to={`/dashboard/application/sop/${appId}/`}>
+            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+              Enter Details
+            </button>
+          </Link>
+          <p>
+            <button
+              onClick={() => deleteSOP(SOP?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
+              Reset Details
+            </button>
+          </p>
+        </div>
+      </div>
+
+      {/* Other Information */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">Other Information</h1>
+        <hr className="my-3" />
+        {OtherInfos && (
+          <>
+            {OtherInfos.map((d) => (
+              <>
+                <Info label={"Awarded By"} text={`${d.by}`} />
+                <Info label={"Title"} text={`${d.title}`} />
+                <Info label={"Date"} text={`${d.date}`} />
+                <Info
+                  label="Document"
+                  text={
+                    <a
+                      href={getStaticUrl(d.doc)}
+                      className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                      target="__blank"
+                      referrer="noreferrer noopenner"
+                    >
+                      View Document
+                    </a>
+                  }
+                />
+              </>
+            ))}
+            <div className="flex">
+              <Link to={`/dashboard/application/otherinfo/${appId}/`}>
+                <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                  Enter Details
+                </button>
+              </Link>
+              <p>
+                <button
+                  onClick={() => deleteOtherInfo(OtherInfos[0]?.id)}
+                  className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                >
+                  Reset Details
+                </button>
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Future Plans */}
+      {FuturePlan && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Future Plans</h1>
+          <hr className="my-3" />
+          {FuturePlan && (
+            <div key={FuturePlan.id}>
+              <Info
+                label="File"
+                text={
+                  <a
+                    href={getStaticUrl(FuturePlan.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              {/* <Info label="Salary" text={e.salary} /> */}
+              <div className="flex">
+                <p>
+                  <button
+                    onClick={() => deleteFututrePlans(FuturePlan?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
+                    Delete Record
+                  </button>
+                </p>
+              </div>
+              <hr className="my-3" />
+            </div>
+          )}
+          <div className="flex">
+            <Link to={`/dashboard/application/futureplans/${appId}/`}>
+              <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                Enter New Record
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* General Questions */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">General Questions</h1>
+        <hr className="my-3" />
+        {GeneralQue && (
+          <>
+            {GeneralQue.one && <Info label="Ques 1" text={GeneralQue.one} />}
+
+            {GeneralQue.two && <Info label="Ques 2" text={GeneralQue.two} />}
+            {GeneralQue.three && (
+              <Info label="Ques 3" text={GeneralQue.three} />
+            )}
+            {GeneralQue.four && <Info label="Ques 4" text={GeneralQue.four} />}
+            {GeneralQue.five && <Info label="Ques 5" text={GeneralQue.five} />}
+          </>
+        )}
+        <div className="flex">
+          <Link to={`/dashboard/application/generalques/${appId}/`}>
+            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+              Enter Details
+            </button>
+          </Link>
+          <p>
+            <button
+              onClick={() => deleteGeneralQues(GeneralQue?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
+              Reset Details
+            </button>
+          </p>
+        </div>
+      </div>
+
+     
 
       {/* Referees */}
       <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
