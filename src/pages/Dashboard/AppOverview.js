@@ -165,7 +165,7 @@ export default function AppOverview() {
     AcadExperiences,
     AcadQualifications,
     FuturePlan,
-    BestPaper,
+    BestPapers,
     GeneralQue,
     IndustryExps,
     OtherInfos,
@@ -226,6 +226,7 @@ export default function AppOverview() {
               text={PersonalDetail.corAddress}
             />
             <Info label="Phone" text={PersonalDetail.phone} />
+            
             <Info label="Email" text={PersonalDetail.email} />
             {/*<Info label="Fax" text={PersonalDetail.fax} />
              <Info label="E-mail" text={PersonalDetail.fax} /> */}
@@ -234,9 +235,24 @@ export default function AppOverview() {
             <Info label="Permanent Address" text={PersonalDetail.perAddress} />
             {/* <Info label="Email" text={PersonalDetail.phone} /> */}
             <Info label="PWD" text={PersonalDetail.pwd} />
+            {
+              PersonalDetail.pwdDoc&&<Info
+              label="Pwd document "
+              text={
+                <a
+                  href={getStaticUrl(PersonalDetail.pwdDoc)}
+                  className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                  target="__blank"
+                  referrer="noreferrer noopenner"
+                >
+                  View Document
+                </a>
+              }
+            />
+            }
             {/* <Info label="Email" text={PersonalDetail.pwd} /> */}
-            <Info label="Secondary Phone" text={PersonalDetail.SecPhone} />
-            <Info label="Secondary Email" text={PersonalDetail.secEmail} />
+            <Info label="Secondary Phone" text={PersonalDetail.secPhone} />
+            {/* <Info label="Secondary Email" text={PersonalDetail.secEmail} /> */}
             {/* <Info label="Secondary Fax" text={PersonalDetail.sexFax} />*/}
             <Info label="Gender" text={PersonalDetail.sex} />
             {PersonalDetail.photo && (
@@ -441,7 +457,202 @@ export default function AppOverview() {
         </div>
       </div>
 
-      
+      {/* Best Papers */}
+      {BestPapers && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Best Papers</h1>
+          <hr className="my-3" />
+          {BestPapers && 
+          BestPapers.map((obj)=>(
+            <div key={obj.id}>
+              <Info label="Publisher" text={obj.publisher} />
+              <Info label="Title" text={obj.title} />
+              <Info label="Year Of Publish" text={obj.yearOfPub} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(obj.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              {/* <Info label="Salary" text={e.salary} /> */}
+              <div className="flex">
+                <p>
+                  <button
+                    onClick={() => deleteBestPapers(obj?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
+                    Delete Record
+                  </button>
+                </p>
+              </div>
+              <hr className="my-3" />
+            </div>
+          ))}
+          <div className="flex">
+            <Link to={`/dashboard/application/bestpapers/${appId}/`}>
+              <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                Enter New Record
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Future Plans */}
+      {FuturePlan && (
+        <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+          <h1 className="text-indigo-600 text-lg font-bold">Future Plans</h1>
+          <hr className="my-3" />
+          {FuturePlan && (
+            <div key={FuturePlan.id}>
+              <Info
+                label="File"
+                text={
+                  <a
+                    href={getStaticUrl(FuturePlan.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              {/* <Info label="Salary" text={e.salary} /> */}
+              <div className="flex">
+                <p>
+                  <button
+                    onClick={() => deleteFututrePlans(FuturePlan?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
+                    Delete Record
+                  </button>
+                </p>
+              </div>
+              <hr className="my-3" />
+            </div>
+          )}
+          <div className="flex">
+            <Link to={`/dashboard/application/futureplans/${appId}/`}>
+              <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                Enter New Record
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* General Questions */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">General Questions</h1>
+        <hr className="my-3" />
+        {GeneralQue && (
+          <>
+            {GeneralQue.one && <Info label="Ques 1" text={GeneralQue.one} />}
+
+            {GeneralQue.two && <Info label="Ques 2" text={GeneralQue.two} />}
+            {GeneralQue.three && (
+              <Info label="Ques 3" text={GeneralQue.three} />
+            )}
+            {GeneralQue.four && <Info label="Ques 4" text={GeneralQue.four} />}
+            {GeneralQue.five && <Info label="Ques 5" text={GeneralQue.five} />}
+          </>
+        )}
+        <div className="flex">
+          <Link to={`/dashboard/application/generalques/${appId}/`}>
+            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+              Enter Details
+            </button>
+          </Link>
+          <p>
+            <button
+              onClick={() => deleteGeneralQues(GeneralQue?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
+              Reset Details
+            </button>
+          </p>
+        </div>
+      </div>
+
+      {/* Other Information */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">Other Information</h1>
+        <hr className="my-3" />
+        {OtherInfos && (
+          <>
+            {OtherInfos.map((d) => (
+              <>
+              <Info label={"Awarded By"} text={`${d.by}`} />
+              <Info label={"Title"} text={`${d.title}`} />
+              <Info label={"Date"} text={`${d.date}`} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(d.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              </>
+            ))}
+            <div className="flex">
+              <Link to={`/dashboard/application/otherinfo/${appId}/`}>
+                <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                  Enter Details
+                </button>
+              </Link>
+              <p>
+                <button
+                  onClick={() => deleteOtherInfo(OtherInfos[0]?.id)}
+                  className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                >
+                  Reset Details
+                </button>
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Ptensts */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">Patents</h1>
+        <hr className="my-3" />
+        {Patents && Patents.map(p => (<>
+          <Info label="Name" text={p.name} />
+          <Info label="Status" text={p.status} />
+          <Info label="Number" text={p.num} />
+          <Info label="Year" text={p.year} />
+        </>))}
+        <div className="flex">
+          <Link to={`/dashboard/application/patents/${appId}/`}>
+            <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+              Enter Details
+            </button>
+          </Link>
+          <p>
+            <button
+              onClick={() => deletePatents(Patents[0]?.id)}
+              className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+            >
+              Reset Details
+            </button>
+          </p>
+        </div>
+      </div>
 
       {/* Publications */}
       <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
@@ -492,6 +703,51 @@ export default function AppOverview() {
               />
             </>
           ))}
+              <div className="flex">
+                <Link to={`/dashboard/application/research/${appId}/`}>
+                  <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
+                    Enter Details
+                  </button>
+                </Link>
+                <p>
+                  <button
+                    onClick={() => deletePublications(Patents[0]?.id)}
+                    className="bg-red-500 px-3 py-1 m-2 rounded text-white"
+                  >
+                    Reset Details
+                  </button>
+                </p>
+              </div>
+      </div>
+
+      {/* SOP */}
+      <div className="flex flex-col justify-center shadow mx-12 p-4 mb-4">
+        <h1 className="text-indigo-600 text-lg font-bold">
+          SOP - Statement of purpose
+        </h1>
+        <hr className="my-3" />
+        {SOP && (
+          <>
+            {SOP.sop !== "0" && (
+              <>
+              <Info label="Purpose" text={SOP.sop} />
+              <Info
+                label="Document"
+                text={
+                  <a
+                    href={getStaticUrl(SOP.doc)}
+                    className="bg-green-500 px-3 py-1 m-2 rounded text-white"
+                    target="__blank"
+                    referrer="noreferrer noopenner"
+                  >
+                    View Document
+                  </a>
+                }
+              />
+              </>
+            )}
+          </>
+        )}
         <div className="flex">
           <Link to={`/dashboard/application/research/${appId}/`}>
             <button className="bg-indigo-500 px-3 py-1 m-2 rounded text-white">
@@ -568,8 +824,8 @@ export default function AppOverview() {
             return (
               <>
                 <Info label="Type" text={t.type} />
-                <Info label="Candidate Name" text={t.nameOfCandiadate} />
-                <Info label="Insitute Name" text={t.institute} />
+                <Info label="Candidate Name" text={t.nameOfCandidate} />
+                <Info label="Insitute Name" text={t.insitute} />
                 <Info label="Year" text={t.regYear} />
                 <Info label="Status" text={t.status || "NA"} />
                 <Info label="Final Viva" text={t.finalViva} />

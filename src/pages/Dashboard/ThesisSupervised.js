@@ -202,6 +202,7 @@ export default function ThesisSupervised() {
             required={true}
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
+            <option value="">Select Type</option>
             <option value="UG">U.G.</option>
             <option value="PG">P.G.</option>
             <option value="PHD">PhD</option>
@@ -220,6 +221,7 @@ export default function ThesisSupervised() {
             required={true}
             className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
           >
+            <option value="">Select Status</option>
             <option value="completed">Completed</option>
             <option value="ongoing">Ongoing</option>
           </select>
