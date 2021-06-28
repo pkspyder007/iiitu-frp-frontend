@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 import AppLayout from "./AppLayout";
 
 const initState = {
-  one: "NA",
-  two: "NA",
-  three: "NA",
-  four: "NA",
-  five: "NA",
+  one: "No",
+  two: "No",
+  three: "No",
+  four: "No",
+  five: "No",
   appId: "",
 };
 const YesOrNo = ({ set, state, name }) => {
@@ -27,15 +27,15 @@ const YesOrNo = ({ set, state, name }) => {
         <input
           type="radio"
           onClick={() => set({ ...state, [name]: "" })}
-          checked={state[name] === "NA" ? false : true}
+          checked={state[name] === "No" ? false : true}
         ></input>
       </div>
       <div>
         <label className="mr-1">No</label>
         <input
           type="radio"
-          onClick={() => set({ ...state, [name]: "NA" })}
-          checked={state[name] !== "NA" ? false : true}
+          onClick={() => set({ ...state, [name]: "No" })}
+          checked={state[name] !== "No" ? false : true}
         ></input>
       </div>
     </div>
@@ -88,7 +88,7 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.one != "NA" ? (
+          {state.one != "No" ? (
             <textarea
               onChange={onChangeHandler}
               id="one"
@@ -107,7 +107,7 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.two != "NA" ? (
+          {state.two != "No" ? (
             <textarea
               onChange={onChangeHandler}
               id="two"
@@ -126,7 +126,7 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.three != "NA" ? (
+          {state.three != "No" ? (
             <textarea
               onChange={onChangeHandler}
               id="three"
@@ -146,7 +146,7 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.four != "NA" ? (
+          {state.four != "No" ? (
             <textarea
               onChange={onChangeHandler}
               id="four"
@@ -165,7 +165,7 @@ export default function General() {
             </strong>
             <span className="text-red-500">*</span>
           </label>
-          {state.five != "NA" ? (
+          {state.five != "No" ? (
             <textarea
               onChange={onChangeHandler}
               id="five"
