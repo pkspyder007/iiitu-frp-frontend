@@ -189,7 +189,7 @@ export default function ThesisSupervised() {
           type="file"
           required={true}
         /> */}
-          <label htmlFor="type" className="text-sm mb-1">
+          {/* <label htmlFor="type" className="text-sm mb-1">
             Type <span className="text-red-500">*</span>
           </label>
           <select
@@ -206,9 +206,9 @@ export default function ThesisSupervised() {
             <option value="UG">U.G.</option>
             <option value="PG">P.G.</option>
             <option value="PHD">PhD</option>
-          </select>
+          </select> */}
 
-          <label htmlFor="status" className="text-sm mb-1">
+          {/* <label htmlFor="status" className="text-sm mb-1">
             Status <span className="text-red-500">*</span>
           </label>
           <select
@@ -224,9 +224,9 @@ export default function ThesisSupervised() {
             <option value="">Select Status</option>
             <option value="completed">Completed</option>
             <option value="ongoing">Ongoing</option>
-          </select>
+          </select> */}
           <label htmlFor="nameOfCandidate" className="text-sm mb-1">
-            Name of Candidate <span className="text-red-500">*</span>
+            Number of UG project guided <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             name="nameOfCandidate"
@@ -234,11 +234,11 @@ export default function ThesisSupervised() {
             value={state.nameOfCandidate}
             onChange={onChangeHandler}
             type="text"
-            placeholder="nameOfCandidate *"
+            placeholder="UG projects *"
             required={true}
           />
           <label htmlFor="insitute" className="text-sm mb-1">
-            Insitute <span className="text-red-500">*</span>
+            Number of PG students guided <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             name="insitute"
@@ -246,10 +246,10 @@ export default function ThesisSupervised() {
             value={state.insitute}
             onChange={onChangeHandler}
             type="text"
-            placeholder="insitute *"
+            placeholder="PG projects *"
             required={true}
           />
-          <label htmlFor="regYear" className="text-sm mb-1">
+          {/* <label htmlFor="regYear" className="text-sm mb-1">
             Registration Year <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -260,9 +260,9 @@ export default function ThesisSupervised() {
             type="date"
             placeholder="regYear *"
             required={true}
-          />
+          /> */}
           <label htmlFor="finalViva" className="text-sm mb-1">
-            Title Of Thesis <span className="text-red-500">*</span>
+            Number of PhD thesis added <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             name="finalViva"
@@ -270,11 +270,11 @@ export default function ThesisSupervised() {
             value={state.finalViva}
             onChange={onChangeHandler}
             type="text"
-            placeholder="finalViva *"
+            placeholder="PhD Thesis *"
             required={true}
           />
           <label htmlFor="first" className="text-sm mb-1">
-            <strong>Proof</strong>
+            <strong>Supporting Document</strong>
             <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
@@ -297,7 +297,7 @@ export default function ThesisSupervised() {
                 className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-indigo-600"
                 type={"submit"}
               >
-                Add
+                Submit
               </button>
             </div>
           </div>
