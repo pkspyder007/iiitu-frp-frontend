@@ -160,7 +160,7 @@ export default function BestPapers() {
             required={true}
           />
           <label htmlFor="publisher" className="text-sm mb-1">
-            publisher <span className="text-red-500">*</span>
+            Publisher <span className="text-red-500">*</span>
           </label>
           <SecondaryInput
             name="publisher"

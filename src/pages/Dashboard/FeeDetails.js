@@ -114,8 +114,6 @@ export default function FeeDetails() {
                 </p>
                 <p style={{ margin: "5px" }}>Step 6: Enter the details as:</p>
                 <div style={{ marginLeft: "3vw" }}>
-                  <p style={{ margin: "5px" }}>Name: {state?.name}</p>
-                  <p style={{ margin: "5px" }}>Adv No.: {job.adNo}</p>
                   <p style={{ margin: "5px" }}>
                     Post Applied for: {job?.title}
                   </p>

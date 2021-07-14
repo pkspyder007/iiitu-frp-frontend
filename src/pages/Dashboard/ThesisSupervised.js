@@ -233,7 +233,7 @@ export default function ThesisSupervised() {
             id="nameOfCandidate"
             value={state.nameOfCandidate}
             onChange={onChangeHandler}
-            type="text"
+            type="number"
             placeholder="UG projects *"
             required={true}
           />
@@ -245,7 +245,7 @@ export default function ThesisSupervised() {
             id="insitute"
             value={state.insitute}
             onChange={onChangeHandler}
-            type="text"
+            type="number"
             placeholder="PG projects *"
             required={true}
           />
@@ -269,7 +269,7 @@ export default function ThesisSupervised() {
             id="finalViva"
             value={state.finalViva}
             onChange={onChangeHandler}
-            type="text"
+            type="number"
             placeholder="PhD Thesis *"
             required={true}
           />

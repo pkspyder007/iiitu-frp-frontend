@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Spinner from "../../components/Spinner";
 
+
 function getStaticUrl(link) {
   let str = link.split("uploads");
   let finalImage = str[1];
@@ -583,6 +584,7 @@ export default function AppOverview() {
           <>
             {OtherInfos.map((d) => (
               <>
+              <Info label={"Award Type"} text={`${d.type}`} />
               <Info label={"Awarded By"} text={`${d.by}`} />
               <Info label={"Title"} text={`${d.title}`} />
               <Info label={"Date"} text={`${d.date}`} />

@@ -163,8 +163,7 @@ export default function ResearchPublication() {
 
 
         <label htmlFor="doc" className="text-sm mb-1">
-          List of the Publications. (See the help on right side for the
-          details of the list document.)<span className="text-red-500">*</span>
+          List of the Publications.<span className="text-red-500">*</span>
         </label>
         <SecondaryInput
           onChange={onFileChangeHandler}

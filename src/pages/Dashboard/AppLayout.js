@@ -103,7 +103,7 @@ export default function AppLayout(props) {
               className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
               to={`/dashboard/application/otherinfo/${appId}`}
             >
-              Other Inofrmation
+              Other Information
             </NavLink>
             <NavLink
               className="py-3 px-5 border-b border-black text-white hover:bg-indigo-400 "
